@@ -182,11 +182,15 @@ const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyXS4aOXEA_zRRl
     const haystack = [
       video.url,
       video.link,
+      video.title,
       video.type,
     ].join(" ").toLowerCase();
 
     return (
       haystack.includes("/shorts/") ||
+      haystack.includes("#shorts") ||
+      haystack.includes("#short") ||
+      haystack.includes("#ショート") ||
       video.isShort === true
     );
   }
