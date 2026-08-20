@@ -1,4 +1,4 @@
-const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyXS4aOXEA_zRRlH1ScNojKkVilgt9dLwG1XBXMm8mvJd9QIxvdNv-dFbtyLZSozE_AEA/exec";
+const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzrSaDiBKvyvtR6pfu7jnE2tgsR7qpqU6eMkE0toH2DUP6SJ7c2kxweRNTqIQoKNw9DMw/exec";
 
 (function () {
   const targets = document.querySelectorAll("[data-video-autoload]");
