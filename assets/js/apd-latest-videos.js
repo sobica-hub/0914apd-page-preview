@@ -182,17 +182,11 @@ const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyXS4aOXEA_zRRl
     const haystack = [
       video.url,
       video.link,
-      video.title,
-      video.description,
-      video.youtubeDescription,
-      video.summary,
       video.type,
     ].join(" ").toLowerCase();
 
     return (
       haystack.includes("/shorts/") ||
-      haystack.includes("#shorts") ||
-      haystack.includes("#short") ||
       video.isShort === true
     );
   }
@@ -227,7 +221,7 @@ const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyXS4aOXEA_zRRl
       const landscape = await isLandscapeThumbnail(video);
 
       if (!landscape) continue;
-      if (duration && duration <= 60 && !landscape) continue;
+      if (duration && duration <= 60) continue;
 
       picked.push(video);
     }
