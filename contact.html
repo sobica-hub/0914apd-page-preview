@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ - 株式会社APD</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans JP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Social Icons & Service Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGreen: '#1bbb86',     /* 鮮やかなミントグリーン */
+                        brandGreenLight: '#e8f8f3',/* 優しい緑の背景用 */
+                        brandOrange: '#ff8d42',    /* アクセントオレンジ */
+                        brandOrangeHover: '#e67325',
+                        brandOrangeLight: '#fff4ec',/* オレンジの背景用 */
+                        textDark: '#2d3748',       /* 柔らかい黒 */
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                    }
+                }
+            }
+        };
+
+        function imageLoaded(imgElement) {
+            const src = imgElement.getAttribute('src');
+            if (!src || src.trim() === "" || src === "#") {
+                imageLoadError(imgElement);
+                return;
+            }
+            imgElement.classList.remove('hidden');
+            const placeholder = imgElement.nextElementSibling;
+            if (placeholder && placeholder.classList.contains('placeholder-fallback')) {
+                placeholder.classList.add('hidden');
+            }
+        }
+
+        function imageLoadError(imgElement) {
+            imgElement.classList.add('hidden');
+            const placeholder = imgElement.nextElementSibling;
+            if (placeholder && placeholder.classList.contains('placeholder-fallback')) {
+                placeholder.classList.remove('hidden');
+            }
+        }
+        
+        function toggleFormUnlock(checkbox) {
+            const overlay = document.getElementById('formOverlay');
+            const iframe = document.getElementById('googleFormIframe');
+
+            if (checkbox.checked) {
+                overlay.style.display = "none";
+
+                iframe.classList.remove("opacity-20");
+                iframe.classList.remove("pointer-events-none");
+                iframe.classList.add("opacity-100");
+            } else {
+                overlay.style.display = "flex";
+
+                iframe.classList.remove("opacity-100");
+                iframe.classList.add("opacity-20");
+                iframe.classList.add("pointer-events-none");
+            }
+        }
+</script>
+    </script>
+
+    <!-- CUSTOM RESPONSIVE CSS RULE & WAVE PATTERNS -->
+    <style>
+        @media screen and (max-width:767px){
+            br.nobr { display: contents; }
+        }
+        /* メディアクエリを用いた文字詰めと行間調整 */
+        .txt-rich {
+            font-feature-settings: 'palt';
+            letter-spacing: -0.01em;
+            line-height: 2.2;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-textDark antialiased leading-relaxed overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header class="bg-white border-b border-gray-100 py-4 px-3 md:px-8 overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-row justify-between items-center gap-1 sm:gap-2">
+            <!-- Logo & Brand Name -->
+            <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 group flex-shrink-0">
+                
+                <img src="assets/images/APD_logo.svg" alt="株式会社APD" class="h-10 sm:h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105">
+
+                <div class="flex-shrink-0">
+                    <h1 class="text-sm sm:text-lg md:text-2xl font-black tracking-wider text-gray-800 leading-none">株式会社APD</h1>
+                </div>
+            </a>
+            
+            <!-- Catchphrase (Right) -->
+            <div class="text-right text-xs text-gray-600 font-bold flex-shrink-1 min-w-0 max-w-[170px] sm:max-w-none">
+                <p class="text-brandGreen font-extrabold text-[9px] sm:text-xs leading-none">【介護事業者向け】</p>
+                <p class="text-[8px] sm:text-[10px] md:text-[11px] text-gray-500 font-medium mt-1 leading-tight sm:leading-snug break-all sm:break-normal">
+                    オンライン法定研修・運営指導対策・<br class="inline sm:hidden">認知症GH経営支援
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION BAR (現在地としてお問い合わせリンクを黄色ハイライト) -->
+    <nav class="bg-brandGreen sticky top-0 z-40 shadow-md overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex justify-between sm:justify-center items-center py-3 sm:py-3.5 px-2 text-white font-bold text-xs sm:text-sm md:text-base gap-1 sm:gap-2 w-full max-w-full sm:tracking-normal">
+                <a href="index.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">ホーム</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="sns.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">YouTube<br class="inline sm:hidden">・SNS</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="service.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">サービス<br class="inline sm:hidden">概要</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="profile.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">代表<br class="inline sm:hidden">挨拶</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="company.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">会社<br class="inline sm:hidden">概要</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="#" class="px-1 py-2 text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">お問い<br class="inline sm:hidden">合わせ</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="w-full min-h-screen bg-[#F8F9FA] overflow-hidden pb-16">
+
+        <!-- PAGE TITLE -->
+        <section class="bg-white py-12 md:py-16 border-b border-gray-150 text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-xl sm:text-2xl md:text-4xl font-black text-gray-800 tracking-wider">
+                    お問い合わせ
+                </h2>
+                <p class="text-[10px] sm:text-xs md:text-sm font-bold text-gray-400 tracking-[0.3em] uppercase mt-2 mb-4">
+                    CONTACT
+                </p>
+                <div class="text-sm sm:text-base md:text-[16px] text-gray-600 font-medium tracking-tight mt-6 max-w-2xl mx-auto space-y-2">
+                    <p class="leading-relaxed">
+                        サービスに関するご相談、お見積りのご依頼など、お気軽にお問い合わせください。<br>
+                        通常2営業日以内に担当者より折り返しご連絡させていただきます。
+                    </p>
+                    <p class=" text-sm sm:text-sm md:text-base text-red-500 font-bold leading-relaxed">
+                        ※本フォームは事業者様および経営者様専用の窓口です。<br>営業目的のご連絡は固くお断りいたします。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTENT SECTION -->
+        <section class="py-10 sm:py-16 bg-[#F8F9FA] w-full relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+                <div class="w-full max-w-[640px] mx-auto bg-white rounded-2xl shadow-md border border-gray-200 p-6 mb-6 text-center relative z-10">
+                    <label class="inline-flex items-center gap-3 cursor-pointer group select-none">
+                        <input type="checkbox" id="policyAgreement" onchange="toggleFormUnlock(this)" class="w-5 h-5 rounded border-gray-300 text-brandGreen focus:ring-brandGreen accent-brandGreen cursor-pointer">
+                        <span class="text-sm sm:text-base font-bold text-gray-700 group-hover:text-brandGreen transition-colors">
+                            <a href="policy.html" target="_blank" class="text-brandGreen underline font-bold hover:text-emerald-600 transition-colors">プライバシーポリシー</a>に同意する
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Google Form Container Card -->
+                <div class="w-full max-w-[640px] mx-auto bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden relative z-10 transition-all duration-500">
+                    
+                    <!-- シンプルになったロック用オーバーレイシールド (チェックが入るまで表示) -->
+                    <div id="formOverlay" class="absolute inset-0 bg-gray-50/40 backdrop-blur-[1px] z-30 flex flex-col items-center justify-center p-4 text-center pointer-events-auto transition-opacity duration-300">
+                        <p class="text-xs sm:text-sm font-bold text-gray-700 bg-white/95 px-5 py-2.5 rounded-full shadow-lg border border-gray-200 flex items-center gap-2">
+                            <i class="fa-solid fa-lock text-brandOrange"></i>
+                            上部の「プライバシーポリシーに同意する」にチェックを入れてください
+                        </p>
+                    </div>
+
+                    <!-- Google Form Iframe (初期状態は半透明・操作不可) -->
+                    <!-- Googleフォームは内容変更時に高さが変わるため、必要に応じて h-[...] を調整 -->
+                    <iframe id="googleFormIframe" src="https://docs.google.com/forms/d/e/1FAIpQLScUS_J8TaFeUnq3tnkjRdHljU9Z-nX2Dw7Arj9Y_YJgL7aaSA/viewform?embedded=true" class="w-full h-[1950px] sm:h-[1900px] md:h-[1900px] lg:h-[1850px] border-0 transition-opacity duration-300 opacity-20 pointer-events-none" frameborder="0" marginheight="0" marginwidth="0">
+                        読み込んでいます…
+                    </iframe>
+                </div>
+
+                <!-- JUMP NAVIGATION BUTTONS (左右の名称・遷移先・アイコン変更) -->
+                <div class="pt-12 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <!-- 左ボタン：「会社概要へ」 -->
+                    <a href="company.html" class="inline-flex items-center justify-center bg-brandOrange hover:bg-brandOrangeHover text-white font-bold text-lg px-8 py-3.5 rounded-full shadow-lg shadow-brandOrange/35 hover:shadow-brandOrange/50 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-xs min-h-[48px] text-center">
+                        <i class="fa-solid fa-building mr-2 text-lg"></i> 会社概要へ
+                    </a>
+                    <!-- 右ボタン：「ホームへ」 -->
+                    <a href="index.html" class="inline-flex items-center justify-center bg-brandOrange hover:bg-brandOrangeHover text-white font-bold text-lg px-8 py-3.5 rounded-full shadow-lg shadow-brandOrange/35 hover:shadow-brandOrange/50 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-xs min-h-[48px] text-center">
+                        <i class="fa-solid fa-house mr-2 text-lg"></i> ホームへ
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brandGreen text-white py-10 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <!-- Social Accounts -->
+            <div class="space-y-4">
+                <h4 class="text-base sm:text-lg font-bold tracking-wider">公式SNSアカウント</h4>
+                <div class="flex justify-center items-center gap-5 sm:gap-6 text-2xl sm:text-3xl md:text-4xl">
+                    <a href="https://www.instagram.com/kaigo_no_hidechannel/" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/apdream515/" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@hideking.apd" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.threads.com/@kaigo_no_hidechannel?xmt=AQG0LuBmjoE1n0MAFNwBetNoZ9_e8P_bYN0vwNJ0SV557wQ" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2 flex items-center justify-center" title="Threads">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-threads w-[1em] h-[1em]" viewBox="0 0 16 16">
+                            <path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@HIDEKING-APD" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Brand / Logo bottom -->
+            <div class="space-y-2 pt-4 border-t border-white/20">
+                <div class="flex justify-center items-center gap-2">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="assets/images/APD_logo.svg" alt="株式会社APD" class="h-10 w-auto">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-black text-white tracking-wider">株式会社APD</h3>
+                    </div>
+                    </a>
+                </div>
+                <p class="text-sm sm:text-base text-[#004619] font-medium">介護の未来を創る</p>
+            </div>
+
+            <!-- Navigation Links in Footer (お問い合わせを黄色にハイライト) -->
+            <div class="flex flex-wrap justify-center items-center gap-x-3 sm:gap-x-4 gap-y-2.5 text-sm text-white font-medium">
+                <a href="index.html" class="hover:text-[#fef263] py-1">ホーム</a>
+                <span class="opacity-30">|</span>
+                <a href="sns.html" class="hover:text-[#fef263] py-1">YouTube・SNS</a>
+                <span class="opacity-30">|</span>
+                <a href="service.html" class="hover:text-[#fef263] py-1">サービス概要</a>
+                <span class="opacity-30">|</span>
+                <a href="profile.html" class="hover:text-[#fef263] py-1">代表挨拶</a>
+                <span class="opacity-30">|</span>
+                <a href="company.html" class="hover:text-[#fef263] py-1">会社概要</a>
+                <span class="opacity-30">|</span>
+                <a href="#" class="text-[#fef263] py-1">お問い合わせ</a>
+                <span class="opacity-30">|</span>
+                <a href="policy.html" class="hover:text-[#fef263] py-1">プライバシーポリシー</a>
+                <span class="opacity-30">|</span>
+                <a href="tokusho.html" class="hover:text-[#fef263] py-1">特定商取引法に基づく表記</a>
+            </div>
+
+            <!-- Copyright -->
+            <p class="text-xs sm:text-sm font-regular text-[#004619] pt-3">
+                &copy; 2026 株式会社APD. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

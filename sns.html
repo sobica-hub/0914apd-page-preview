@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube・SNS - 株式会社APD</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans JP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Social Icons & Service Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGreen: '#1bbb86',     /* 鮮やかなミントグリーン */
+                        brandGreenLight: '#e8f8f3',/* 優しい緑の背景用 */
+                        brandOrange: '#ff8d42',    /* アクセントオレンジ */
+                        brandOrangeHover: '#e67325',
+                        brandOrangeLight: '#fff4ec',/* オレンジの背景用 */
+                        textDark: '#2d3748',       /* 柔らかい黒 */
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                    }
+                }
+            }
+        };
+
+        function imageLoaded(imgElement) {
+            const src = imgElement.getAttribute('src');
+            if (!src || src.trim() === "" || src === "#") {
+                imageLoadError(imgElement);
+                return;
+            }
+            imgElement.classList.remove('hidden');
+            const placeholder = imgElement.nextElementSibling;
+            if (placeholder && placeholder.classList.contains('placeholder-fallback')) {
+                placeholder.classList.add('hidden');
+            }
+        }
+
+        function imageLoadError(imgElement) {
+            imgElement.classList.add('hidden');
+            const placeholder = imgElement.nextElementSibling;
+            if (placeholder && placeholder.classList.contains('placeholder-fallback')) {
+                placeholder.classList.remove('hidden');
+            }
+        }
+    </script>
+
+    <!-- CUSTOM RESPONSIVE CSS RULE & WAVE PATTERNS -->
+    <style>
+        @media screen and (max-width:767px){
+            br.nobr { display: contents; }
+        }
+        /* メディアクエリを用いた文字詰めと行間調整 */
+        .txt-rich {
+            font-feature-settings: 'palt';
+            letter-spacing: -0.01em;
+            line-height: 2.2;
+        }
+    </style>
+
+    <!-- INTEGRATED WIDGET CSS (latest-videos-widget.css の要素を完全再現) -->
+    <style>
+        :root {
+            --yt-bg: #e8f8f3; /* ①背景色を brandGreenLight (#e8f8f3) に変更 */
+            --yt-card: #ffffff;
+            --yt-text: #2d3748;
+            --yt-muted: #4a5568; /* gray-600 色に変更 */
+            --yt-green: #1bbb86;
+            --yt-green-soft: #e8f8f3;
+            --yt-orange: #ff8d42;
+            --yt-border: #1bbb86;
+        }
+
+        .yt-latest-section {
+            background-color: var(--yt-bg);
+            padding: 48px 0;
+        }
+
+        .yt-latest-inner {
+            width: min(100%, 1060px);
+            margin: 0 auto;
+        }
+
+        /* 縦ライン変更に伴い、flex配置と左paddingを調整 */
+        .yt-latest-inner h2 {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin: 0 0 34px;
+            padding: 0 0 20px 0; /* padding-left を 24px から 0 に変更 */
+            border-bottom: 2px solid var(--yt-green);
+            font-size: clamp(22px, 3.5vw, 32px);
+            font-weight: 900;
+            line-height: 1.25;
+            color: #2d3748;
+            letter-spacing: 0.05em;
+        }
+
+        /* 旧縦ライン（擬似要素）を削除 */
+        .yt-latest-inner h2::before {
+            display: none;
+        }
+
+        .yt-latest-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .yt-latest-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .yt-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--yt-card);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none !important; /* Aタグの下線などを防止 */
+        }
+
+        .yt-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .yt-card-media {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #1a1a1a;
+            overflow: hidden;
+        }
+
+        .yt-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .yt-card:hover .yt-thumbnail {
+            transform: scale(1.05);
+        }
+
+        .yt-card-body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .yt-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--yt-muted);
+            font-size: 13px;
+        }
+
+        .yt-category {
+            flex: 0 0 auto;
+            padding: 4px 12px;
+            border-radius: 6px;
+            color: var(--yt-green);
+            background: var(--yt-green-soft);
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .yt-date {
+            white-space: nowrap;
+        }
+
+        .yt-title {
+            margin: 0 0 10px;
+            color: var(--yt-text);
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        .yt-description {
+            margin: 0;
+            color: var(--yt-muted); /* gray-600 に統一 */
+            font-size: 12px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-textDark antialiased leading-relaxed overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header class="bg-white border-b border-gray-100 py-4 px-3 md:px-8 overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-row justify-between items-center gap-1 sm:gap-2">
+            <!-- Logo & Brand Name -->
+            <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 group flex-shrink-0">
+                
+                <img src="assets/images/APD_logo.svg" alt="株式会社APD" class="h-10 sm:h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105">
+
+                <div class="flex-shrink-0">
+                    <h1 class="text-sm sm:text-lg md:text-2xl font-black tracking-wider text-gray-800 leading-none">株式会社APD</h1>
+                </div>
+            </a>
+            
+            <!-- Catchphrase (Right) -->
+            <div class="text-right text-xs text-gray-600 font-bold flex-shrink-1 min-w-0 max-w-[170px] sm:max-w-none">
+                <p class="text-brandGreen font-extrabold text-[9px] sm:text-xs leading-none">【介護事業者向け】</p>
+                <p class="text-[8px] sm:text-[10px] md:text-[11px] text-gray-500 font-medium mt-1 leading-tight sm:leading-snug break-all sm:break-normal">
+                    オンライン法定研修・運営指導対策・<br class="inline sm:hidden">認知症GH経営支援
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="bg-brandGreen sticky top-0 z-40 shadow-md overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex justify-between sm:justify-center items-center py-3 sm:py-3.5 px-2 text-white font-bold text-xs sm:text-sm md:text-base gap-1 sm:gap-2 w-full max-w-full sm:tracking-normal">
+                <a href="index.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">ホーム</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="#" class="px-1 py-2 text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">YouTube<br class="inline sm:hidden">・SNS</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="service.html" class="px-2 py-1 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">サービス<br class="inline sm:hidden">概要</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="profile.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">代表<br class="inline sm:hidden">挨拶</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="company.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">会社<br class="inline sm:hidden">概要</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="contact.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">お問い<br class="inline sm:hidden">合わせ</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="w-full min-h-screen bg-white overflow-hidden pb-16">
+
+        <!-- HERO SECTION -->
+        <section class="w-full relative border-b border-emerald-100">
+            <div class="w-full bg-emerald-50 aspect-[13/4] md:aspect-[26/8] min-h-[160px] md:max-h-auto flex items-center justify-center relative overflow-hidden">
+                <img src="assets/images/sns_top.jpg" alt="YouTube・SNS紹介ページビジュアル" class="absolute inset-0 w-full h-full object-cover z-0 hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                
+                <div class="placeholder-fallback absolute inset-0 bg-gradient-to-br from-teal-800 via-emerald-900 to-slate-900 flex items-center justify-center z-0 opacity-90">
+                    <svg class="absolute inset-0 w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 100 100">
+                        <circle cx="20" cy="20" r="10" fill="#1bbb86" fill-opacity="0.2"/>
+                        <circle cx="80" cy="50" r="15" fill="#1bbb86" fill-opacity="0.1"/>
+                        <circle cx="50" cy="80" r="8" fill="#1bbb86" fill-opacity="0.15"/>
+                        <path d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z" fill="#1bbb86" fill-opacity="0.08"/>
+                    </svg>
+                </div>
+
+                <!-- Overlay content -->
+                <div class="relative z-10 text-center px-4">
+                    <h2 hidden="text-xl sm:text-3xl md:text-5xl font-black text-white tracking-widest drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
+                        カイゴのひでChannel
+                    </h2>
+                    <p hidden="text-base sm:text-sm md:text-base font-bold text-white/90 tracking-[0.3em] uppercase mt-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
+                        介護をツクろう
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTRO LEAD TEXT SECTION -->
+        <section class="bg-white py-10 sm:py-14 w-full">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6">
+                
+                <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl shadow-brandGreen/10 border-2 border-brandGreen/30 ring-4 ring-brandGreen/5 text-center max-w-xl mx-auto space-y-4">
+                    <h3 class="text-lg sm:text-lg md:text-xl font-black text-gray-700 leading-loose md:leading-[1.8]" style="font-feature-settings: 'halt';">
+                        殿堂入り動画：<br class="inline sm:hidden">1万人以上が視聴した、一番人気の動画<br>
+                        <span class="block mt-4 text-base sm:text-base md:text-lg font-bold text-brandOrange leading-loose md:leading-[2.2]" style="font-feature-settings: 'halt';">
+                            まずはこちら！介護現場の効率的ヒント集
+                        </span>
+                    </h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIDEO PLAYER & SUBSCRIBE CTA SECTION -->
+        <section class="py-12 bg-white w-full relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+                
+                <div class="w-full max-w-2xl mx-auto bg-black rounded-2xl overflow-hidden shadow-xl border border-gray-150 relative z-10">
+                    <div class="aspect-video">
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/nbhsRngZaAk?rel=0"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- YouTubeチャンネル登録で最新情報を受け取るボタン -->
+                <div class="text-center pt-2">
+                    <a href="https://youtube.com/@HIDEKING-APD?sub_confirmation=1" target="_blank" class="inline-flex items-center justify-center bg-brandGreen hover:bg-emerald-400 text-white font-bold text-base sm:text-[17px] leading-relaxed px-10 py-4 rounded-full shadow-lg shadow-brandGreen/25 hover:shadow-brandGreen/40 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-md min-h-[50px]">
+                        YouTubeチャンネル登録で<br>最新情報を受け取る
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- WIDGET INTEGRATION: 最新の解説動画 (3本) -->
+        <section class="yt-latest-section w-full relative">
+            <div class="yt-latest-inner px-4 sm:px-6">
+                <h2 id="yt-latest-heading" style="font-feature-settings: 'halt';">
+                    <div class="w-1.5 h-8 bg-gradient-to-b from-brandOrange via-orange-400 to-orange-300 rounded-full mr-3 sm:mr-4 shadow-sm flex-shrink-0"></div>
+                    最新の解説動画（3本）
+                </h2>
+
+                <div data-video-autoload data-video-count="3" data-video-layout="sns">
+                    <div class="bg-white rounded-xl p-5 text-center text-sm font-bold text-gray-500 shadow-sm">
+                        最新動画を読み込んでいます...
+                    </div>
+                </div>
+
+                <div class="text-center pt-8">
+                    <a href="https://youtube.com/@hideking-apd?si=_nO3BumzOw3bx9MM" target="_blank" class="inline-flex items-center justify-center bg-brandGreen hover:bg-emerald-400 text-white font-bold text-base sm:text-[17px] leading-relaxed px-10 py-4 rounded-full shadow-lg shadow-brandGreen/25 hover:shadow-brandGreen/40 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-md min-h-[50px]">
+                        YouTubeチャンネルを<br>もっと見る
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- OTHER SNS ACCOUNTS INTEGRATION -->
+         <section class="py-8 sm:py-12 md:py-16 bg-white w-full relative">
+            <div class="max-w-5xl mx-auto px-3 sm:px-6">
+                
+                <div class="text-center mb-6 sm:mb-10">
+                    <h3 class="text-lg sm:text-2xl md:text-3xl font-black text-gray-800 tracking-wider">
+                        公式SNS一覧
+                    </h3>
+                    <div class="flex justify-center items-center gap-1.5 mt-2 sm:mt-3">
+                        <div class="w-12 sm:w-16 h-1 bg-brandGreen rounded-full"></div>
+                        <div class="w-2 h-1 bg-brandGreen/30 rounded-full"></div>
+                    </div>
+                </div>
+
+                <!-- Grid of SNS accounts (スマホ2列＋1列中央 / PC 5列) -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-4 lg:gap-5">
+                    
+                    <!-- 1. Instagram -->
+                    <div class="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 shadow-sm border border-[#bedfc2]/50 flex flex-col items-center text-center hover:shadow-md transition-shadow h-full justify-between">
+                        <div class="w-full flex flex-col items-center">
+                            <div class="w-full h-10 sm:h-16 flex items-center justify-center mb-1.5 sm:mb-3">
+                                <i class="fab fa-instagram text-3xl sm:text-5xl md:text-6xl bg-gradient-to-tr from-[#f9ce3f] via-[#e1306c] to-[#833ab4] bg-clip-text text-transparent"></i>
+                            </div>
+                            <h4 class="text-xs sm:text-sm md:text-[15px] font-bold text-gray-800">Instagram</h4>
+                            <p class="text-[10px] sm:text-[12px] text-gray-600 mt-1 sm:mt-2 leading-tight sm:leading-relaxed">
+                                現場の日常とケアの<br>ヒントを写真で。
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/kaigo_no_hidechannel/" target="_blank" class="mt-2.5 sm:mt-4 w-full bg-brandGreen hover:bg-emerald-500 text-white font-bold text-[10px] sm:text-xs py-1.5 sm:py-2 px-2 sm:px-3 rounded-full transition-all text-center">
+                            フォローする
+                        </a>
+                    </div>
+
+                    <!-- 2. Facebook -->
+                    <div class="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 shadow-sm border border-[#bedfc2]/50 flex flex-col items-center text-center hover:shadow-md transition-shadow h-full justify-between">
+                        <div class="w-full flex flex-col items-center">
+                            <div class="w-full h-10 sm:h-16 flex items-center justify-center mb-1.5 sm:mb-3">
+                                <i class="fab fa-facebook text-3xl sm:text-5xl md:text-6xl text-[#1877f2]"></i>
+                            </div>
+                            <h4 class="text-xs sm:text-sm md:text-[15px] font-bold text-gray-800">Facebook</h4>
+                            <p class="text-[10px] sm:text-[12px] text-gray-600 mt-1 sm:mt-2 leading-tight sm:leading-relaxed">
+                                セミナー情報や<br class="inline sm:hidden">活動報告を随時更新。
+                            </p>
+                        </div>
+                        <a href="https://www.facebook.com/apdream515/" target="_blank" class="mt-2.5 sm:mt-4 w-full bg-brandGreen hover:bg-emerald-500 text-white font-bold text-[10px] sm:text-xs py-1.5 sm:py-2 px-2 sm:px-3 rounded-full transition-all text-center">
+                            フォローする
+                        </a>
+                    </div>
+
+                    <!-- 3. TikTok -->
+                    <div class="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 shadow-sm border border-[#bedfc2]/50 flex flex-col items-center text-center hover:shadow-md transition-shadow h-full justify-between">
+                        <div class="w-full flex flex-col items-center">
+                            <div class="w-full h-10 sm:h-16 flex items-center justify-center mb-1.5 sm:mb-3">
+                                <i class="fab fa-tiktok text-3xl sm:text-5xl md:text-6xl text-[#010101]"></i>
+                            </div>
+                            <h4 class="text-xs sm:text-sm md:text-[15px] font-bold text-gray-800">TikTok</h4>
+                            <p class="text-[10px] sm:text-[12px] text-gray-600 mt-1 sm:mt-2 leading-tight sm:leading-relaxed">
+                                30秒で学べる！<br>介護スキルのコツ。
+                            </p>
+                        </div>
+                        <a href="https://www.tiktok.com/@hideking.apd" target="_blank" class="mt-2.5 sm:mt-4 w-full bg-brandGreen hover:bg-emerald-500 text-white font-bold text-[10px] sm:text-xs py-1.5 sm:py-2 px-2 sm:px-3 rounded-full transition-all text-center">
+                            フォローする
+                        </a>
+                    </div>
+
+                    <!-- 4. Threads -->
+                    <div class="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 shadow-sm border border-[#bedfc2]/50 flex flex-col items-center text-center hover:shadow-md transition-shadow h-full justify-between">
+                        <div class="w-full flex flex-col items-center">
+                            <div class="w-full h-10 sm:h-16 flex items-center justify-center mb-1.5 sm:mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-threads w-7 h-7 sm:w-12 sm:h-12 text-slate-800" viewBox="0 0 16 16">
+                                    <path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161"/>
+                                </svg>
+                            </div>
+                            <h4 class="text-xs sm:text-sm md:text-[15px] font-bold text-gray-800">Threads</h4>
+                            <p class="text-[10px] sm:text-[12px] text-gray-600 mt-1 sm:mt-2 leading-tight sm:leading-relaxed" style="font-feature-settings: 'halt';">
+                                介護現場の「本音」と<br>「気づき」を綴る。
+                            </p>
+                        </div>
+                        <a href="https://www.threads.com/@kaigo_no_hidechannel?xmt=AQG0LuBmjoE1n0MAFNwBetNoZ9_e8P_bYN0vwNJ0SV557wQ" target="_blank" class="mt-2.5 sm:mt-4 w-full bg-brandGreen hover:bg-emerald-500 text-white font-bold text-[10px] sm:text-xs py-1.5 sm:py-2 px-2 sm:px-3 rounded-full transition-all text-center">
+                            フォローする
+                        </a>
+                    </div>
+
+                    <!-- 5. YouTube : スマホではcol-span-2で中央配置 (幅50%相当に絞り込み) -->
+                    <div class="col-span-2 sm:col-span-1 w-full max-w-[calc(50%-0.3125rem)] sm:max-w-full mx-auto bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 shadow-sm border border-[#bedfc2]/50 flex flex-col items-center text-center hover:shadow-md transition-shadow h-full justify-between">
+                        <div class="w-full flex flex-col items-center">
+                            <div class="w-full h-10 sm:h-16 flex items-center justify-center mb-1.5 sm:mb-3">
+                                <i class="fab fa-youtube text-3xl sm:text-5xl md:text-6xl text-[#ff0000]"></i>
+                            </div>
+                            <h4 class="text-xs sm:text-sm md:text-[15px] font-bold text-gray-800">YouTube</h4>
+                            <p class="text-[10px] sm:text-[12px] text-gray-600 mt-1 sm:mt-2 leading-tight sm:leading-relaxed">
+                                深く、濃く。<br>介護DXの核心を動画で。
+                            </p>
+                        </div>
+                        <a href="https://www.youtube.com/@HIDEKING-APD" target="_blank" class="mt-2.5 sm:mt-4 w-full bg-brandGreen hover:bg-emerald-500 text-white font-bold text-[10px] sm:text-xs py-1.5 sm:py-2 px-2 sm:px-3 rounded-full transition-all text-center">
+                            フォローする
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- JUMP NAVIGATION BUTTONS -->
+        <section class="py-12 bg-white w-full">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <!-- 左ボタン：ホームへ -->
+                    <a href="index.html" class="inline-flex items-center justify-center bg-brandOrange hover:bg-brandOrangeHover text-white font-bold text-lg px-8 py-3.5 rounded-full shadow-lg shadow-brandOrange/35 hover:shadow-brandOrange/50 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-xs min-h-[48px] text-center">
+                        <i class="fa-solid fa-house mr-2 text-lg"></i> ホームへ
+                    </a>
+                    <!-- 右ボタン：サービス概要へ -->
+                    <a href="service.html" class="inline-flex items-center justify-center bg-brandOrange hover:bg-brandOrangeHover text-white font-bold text-lg px-8 py-3.5 rounded-full shadow-lg shadow-brandOrange/35 hover:shadow-brandOrange/50 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-xs min-h-[48px] text-center">
+                        <i class="fa-solid fa-circle-info mr-2 text-lg"></i> サービス概要へ
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brandGreen text-white py-10 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <!-- Brand / Logo bottom -->
+            <div class="space-y-2 pt-4">
+                <div class="flex justify-center items-center gap-2">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="assets/images/APD_logo.svg" alt="株式会社APD" class="h-10 w-auto">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-black text-white tracking-wider">株式会社APD</h3>
+                    </div>
+                    </a>
+                </div>
+                <p class="text-sm sm:text-base text-[#004619] font-medium">介護の未来を創る</p>
+            </div>
+
+            <!-- Navigation Links in Footer -->
+            <div class="flex flex-wrap justify-center items-center gap-x-3 sm:gap-x-4 gap-y-2.5 text-sm text-white font-medium">
+                <a href="index.html" class="hover:text-[#fef263] py-1">ホーム</a>
+                <span class="opacity-30">|</span>
+                <a href="#" class="text-[#fef263] py-1">YouTube・SNS</a>
+                <span class="opacity-30">|</span>
+                <a href="service.html" class="hover:text-[#fef263] py-1">サービス概要</a>
+                <span class="opacity-30">|</span>
+                <a href="profile.html" class="hover:text-[#fef263] py-1">代表挨拶</a>
+                <span class="opacity-30">|</span>
+                <a href="company.html" class="hover:text-[#fef263] py-1">会社概要</a>
+                <span class="opacity-30">|</span>
+                <a href="contact.html" class="hover:text-[#fef263] py-1">お問い合わせ</a>
+                <span class="opacity-30">|</span>
+                <a href="policy.html" class="hover:text-[#fef263] py-1">プライバシーポリシー</a>
+                <span class="opacity-30">|</span>
+                <a href="tokusho.html" class="hover:text-[#fef263] py-1">特定商取引法に基づく表記</a>
+            </div>
+
+            <!-- Copyright -->
+            <p class="text-xs sm:text-sm font-regular text-[#004619] pt-3">
+                &copy; 2026 株式会社APD. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+<script src="assets/js/apd-latest-videos.js" defer></script>
+</body>
+</html>
+

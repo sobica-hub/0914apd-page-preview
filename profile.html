@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代表挨拶 - 株式会社APD</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans JP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGreen: '#1bbb86',     /* 鮮やかなミントグリーン */
+                        brandGreenLight: '#e8f8f3',/* 優しい緑の背景用 */
+                        brandOrange: '#ff8d42',    /* アクセントオレンジ */
+                        brandOrangeHover: '#e67325',
+                        brandOrangeLight: '#fff4ec',/* オレンジの背景用 */
+                        textDark: '#2d3748',       /* 柔らかい黒 */
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                    }
+                }
+            }
+        };
+
+        function imageLoaded(imgElement) {
+            const src = imgElement.getAttribute('src');
+            if (!src || src.trim() === "" || src === "#") {
+                imageLoadError(imgElement);
+                return;
+            }
+            imgElement.classList.remove('hidden');
+            const placeholder = imgElement.nextElementSibling;
+            if (placeholder && placeholder.classList.contains('placeholder-fallback')) {
+                placeholder.classList.add('hidden');
+            }
+        }
+
+        function imageLoadError(imgElement) {
+            imgElement.classList.add('hidden');
+            const placeholder = imgElement.nextElementSibling;
+            if (placeholder && placeholder.classList.contains('placeholder-fallback')) {
+                placeholder.classList.remove('hidden');
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-white text-textDark antialiased leading-relaxed overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header class="bg-white border-b border-gray-100 py-4 px-3 md:px-8 overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-row justify-between items-center gap-1 sm:gap-2">
+            <!-- Logo & Brand Name -->
+            <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 group flex-shrink-0">
+                
+                <img src="assets/images/APD_logo.svg" alt="株式会社APD" class="h-10 sm:h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105">
+
+                <div class="flex-shrink-0">
+                    <h1 class="text-sm sm:text-lg md:text-2xl font-black tracking-wider text-gray-800 leading-none">株式会社APD</h1>
+                </div>
+            </a>
+            
+            <!-- Catchphrase (Right) -->
+            <div class="text-right text-xs text-gray-600 font-bold flex-shrink-1 min-w-0 max-w-[170px] sm:max-w-none">
+                <p class="text-brandGreen font-extrabold text-[9px] sm:text-xs leading-none">【介護事業者向け】</p>
+                <p class="text-[8px] sm:text-[10px] md:text-[11px] text-gray-500 font-medium mt-1 leading-tight sm:leading-snug break-all sm:break-normal">
+                    オンライン法定研修・運営指導対策・<br class="inline sm:hidden">認知症GH経営支援
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="bg-brandGreen sticky top-0 z-40 shadow-md overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex justify-between sm:justify-center items-center py-3 sm:py-3.5 px-2 text-white font-bold text-xs sm:text-sm md:text-base gap-1 sm:gap-2 w-full max-w-full sm:tracking-normal">
+                <a href="index.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">ホーム</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="sns.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">YouTube<br class="inline sm:hidden">・SNS</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="service.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">サービス<br class="inline sm:hidden">概要</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="#" class="px-1 py-2 text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">代表<br class="inline sm:hidden">挨拶</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="company.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">会社<br class="inline sm:hidden">概要</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="contact.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">お問い<br class="inline sm:hidden">合わせ</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="w-full min-h-screen bg-white overflow-hidden">
+
+        <!-- HERO SECTION -->
+        <section class="w-full relative border-b border-emerald-100">
+            <div class="w-full bg-emerald-50 aspect-[16/6] md:aspect-[21/6] min-h-[160px] md:max-h-[350px] flex items-center justify-center relative overflow-hidden">
+                <img src="assets/images/MAR88_kabintotabel_TP_V.jpg" alt="代表挨拶メインビジュアル" class="absolute inset-0 w-full h-full object-cover z-0 hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                
+                <div class="placeholder-fallback absolute inset-0 bg-gradient-to-br from-emerald-100/50 via-emerald-50/30 to-white/20 flex items-center justify-center z-0">
+                    <svg class="absolute inset-0 w-full h-full opacity-40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 100 100">
+                        <line x1="30" y1="0" x2="30" y2="100" stroke="#1bbb86" stroke-width="0.3"/>
+                        <line x1="70" y1="0" x2="70" y2="100" stroke="#1bbb86" stroke-width="0.3"/>
+                        <line x1="0" y1="40" x2="100" y2="40" stroke="#1bbb86" stroke-width="0.3"/>
+                        <path d="M10,10 Q25,0 35,20 T15,40 Z" fill="#1bbb86" fill-opacity="0.1"/>
+                        <path d="M80,20 Q95,5 90,35 T70,50 Z" fill="#1bbb86" fill-opacity="0.15"/>
+                        <path d="M5,60 Q30,70 20,95 T0,80 Z" fill="#1bbb86" fill-opacity="0.08"/>
+                    </svg>
+                </div>
+
+                <!-- Overlay content -->
+                <div class="relative z-10 text-center px-4">
+                    <h2 class="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-widest drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
+                        代表挨拶
+                    </h2>
+                    <p class="text-[10px] sm:text-xs md:text-sm font-bold text-white/90 tracking-[0.3em] uppercase mt-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
+                        MESSAGE
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFILE BLOCK -->
+        <section class="py-6 sm:py-10 bg-white">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 md:px-8">
+                
+                <div class="flex flex-col sm:flex-row items-center sm:items-end justify-between gap-3 pb-5 mb-6 border-b border-gray-150">
+                    <!-- Photo Column -->
+                    <div class="w-full sm:w-1/2 flex justify-center sm:justify-start order-1 sm:order-2">
+                        <div class="w-44 h-44 sm:w-full sm:aspect-[4/3] sm:h-auto bg-slate-100 rounded-lg overflow-hidden border border-slate-200 shadow-md flex items-center justify-center relative">
+                            <img src="assets/images/profile_3.png" alt="代表取締役 石林秀男 写真" class="w-full h-full object-cover hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                            <div class="placeholder-fallback flex flex-col items-center justify-center text-center p-4 text-slate-500">
+                                <svg class="w-20 h-20 text-slate-300 mb-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                                <p class="font-bold text-sm">石林 秀男 代表近影</p>
+                                <p class="text-[10px] opacity-75 mt-0.5">【代表取締役 石林秀男】</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Name and title Column -->
+                    <div class="w-full sm:w-1/2 flex items-center gap-3 order-2 sm:order-1">
+                        <div class="w-1 h-14 sm:h-20 bg-gray-300 flex-shrink-0 rounded-full"></div>
+                        <div class="space-y-1">
+                            <p class="text-xs sm:text-sm font-semibold text-gray-500 tracking-wider">株式会社APD 代表取締役</p>
+                            <h3 class="text-2xl sm:text-4xl font-extrabold text-gray-800 tracking-wide">石林 秀男</h3>
+                            <p class="text-[10px] sm:text-xs font-bold text-gray-400 tracking-[0.2em] uppercase">Hideo Ishibayashi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Belief section -->
+                <div class="border-l-4 border-brandOrange bg-gradient-to-br from-brandOrangeLight to-amber-100/50 rounded-r-2xl px-4 py-3">
+                    <p class="text-xs font-extrabold text-brandOrange tracking-widest uppercase">OUR BELIEF</p>
+                    <h4 class="text-xl sm:text-2xl font-black text-gray-800 tracking-wide leading-tight" style="text-indent: -0.4em; padding-left: 0.2em;">
+                        「正しさより、安心を」
+                    </h4>
+                    <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed mt-4" style="font-feature-settings: 'halt';">
+                        介護の現場に身を置いて25年。<br>お一人おひとりの「人生という名の物語」の最後まで支える使命。<br>それが私の誇りです。
+                    </p>
+                </div>
+
+                <!-- ADDED SECTION: 代表者経歴・略歴 & 保有資格 -->
+                <div class="mt-7 sm:mt-10 bg-[#F8F9FA] rounded-2xl p-4 sm:p-7 border border-slate-200/80 shadow-sm space-y-4 sm:space-y-6">
+                    
+                    <!-- 1. 代表者経歴・略歴 -->
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2 border-b border-gray-200/80 pb-2.5">
+                            <span class="w-1.5 h-5 bg-brandGreen rounded-full inline-block"></span>
+                            <h5 class="text-base sm:text-lg font-bold text-gray-700 tracking-wide">代表者経歴・略歴</h5>
+                        </div>
+                        
+                        <div class="space-y-3.5 text-xs sm:text-sm text-gray-700 font-regular leading-relaxed" style="font-feature-settings: 'halt';">
+                            <p class="text-justify font-normal">
+                                石川県金沢市・津幡町でのグループホーム運営など、<span class="text-brandGreen font-bold text-sm sm:text-base px-0.5">約25年</span>の現場経験で認知症ケアと職員育成を実践。<br>
+                                令和7年4月より、現場に学びと元気を届けるSNS「カイゴのひでchannel」を開始しました。法定研修やモチベーション向上に繋がる知識を、現場目線で分かりやすく発信しています。
+                            </p>
+                            
+                            <p class="text-justify font-normal">
+                                これまで、全国介護事業者連盟 石川県支部の副支部長や、日本認知症グループホーム協会 石川県支部の理事を歴任。<br>
+                                また、金沢市や津幡町において、介護認定審査会委員や認知症施策推進委員などの公職も数多く務める。
+                            </p>
+                            
+                            <p class="text-justify font-normal">
+                                現場経験を活かした研修講師としても精力的に活動し、「石川県認知症介護実践研修」をはじめとする専門職向けの研修から、小学生向けの「認知症サポーター養成講座」、石川県薬剤師会での講演まで幅広く登壇。<br>
+                                「本人視点の認知症ケア」「人が活きる人材育成」「多職種連携」など、現場のリアルに即したテーマで多数の講演を行っている。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 2. 保有資格 -->
+                    <div class="space-y-2.5 pt-1.5">
+                        <div class="flex items-center gap-2 border-b border-gray-200/80 pb-2.5">
+                            <span class="w-1.5 h-5 bg-brandOrange rounded-full inline-block"></span>
+                            <h5 class="text-base sm:text-lg font-bold text-gray-700 tracking-wide">保有資格</h5>
+                        </div>
+                        
+                        <!-- Responsive Qualifications Grid: 2 cols on mobile, 3-4 cols on PC -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-2.5 pt-1">
+                            <div class="bg-white px-3 py-2 rounded-lg border border-gray-200/90 shadow-xs flex items-center gap-2">
+                                <i class="fa-solid fa-shield-heart text-brandGreen text-xs flex-shrink-0"></i>
+                                <span class="text-xs sm:text-[13px] font-semibold text-gray-700">介護福祉士</span>
+                            </div>
+                            <div class="bg-white px-3 py-2 rounded-lg border border-gray-200/90 shadow-xs flex items-center gap-2">
+                                <i class="fa-solid fa-shield-heart text-brandGreen text-xs flex-shrink-0"></i>
+                                <span class="text-xs sm:text-[13px] font-semibold text-gray-700">社会福祉士</span>
+                            </div>
+                            <div class="bg-white px-3 py-2 rounded-lg border border-gray-200/90 shadow-xs flex items-center gap-2">
+                                <i class="fa-solid fa-shield-heart text-brandGreen text-xs flex-shrink-0"></i>
+                                <span class="text-xs sm:text-[13px] font-semibold text-gray-700">精神保健福祉士</span>
+                            </div>
+                            <div class="bg-white px-3 py-2 rounded-lg border border-gray-200/90 shadow-xs flex items-center gap-2">
+                                <i class="fa-solid fa-shield-heart text-brandGreen text-xs flex-shrink-0"></i>
+                                <span class="text-xs sm:text-[13px] font-semibold text-gray-700">介護支援専門員</span>
+                            </div>
+                            <div class="bg-white px-3 py-2 rounded-lg border border-gray-200/90 shadow-xs flex items-center gap-2 col-span-2 sm:col-span-2 md:col-span-2">
+                                <i class="fa-solid fa-shield-heart text-brandGreen text-xs flex-shrink-0"></i>
+                                <span class="text-xs sm:text-[13px] font-semibold text-gray-700">認知症介護指導者研修修了</span>
+                            </div>
+                            <div class="bg-white px-3 py-2 rounded-lg border border-gray-200/90 shadow-xs flex items-center gap-2">
+                                <i class="fa-solid fa-shield-heart text-brandGreen text-xs flex-shrink-0"></i>
+                                <span class="text-xs sm:text-[13px] font-semibold text-gray-700">福祉用具専門相談員</span>
+                            </div>
+                            <div class="bg-white px-3 py-2 rounded-lg border border-gray-200/90 shadow-xs flex items-center gap-2">
+                                <i class="fa-solid fa-shield-heart text-brandGreen text-xs flex-shrink-0"></i>
+                                <span class="text-xs sm:text-[13px] font-semibold text-gray-700">おむつフィッター</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CARDS SECTION -->
+        <section class="py-7 sm:py-16 bg-brandGreenLight w-full">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 space-y-5">
+                
+                <!-- CARD 1 -->
+                <div class="bg-white rounded-2xl p-5 sm:p-8 shadow-xl shadow-brandGreen/5 border border-white/80 space-y-4">
+                    <div class="flex flex-col items-start gap-1">
+                        <h5 class="text-lg sm:text-xl font-black text-gray-800 flex items-center gap-2.5 relative pl-4">
+                            <span class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-brandOrange to-orange-300 rounded-full"></span>
+                            現場を知るからこそ
+                        </h5>
+                        <div class="flex w-full items-center gap-1.5 mt-1.5">
+                            <div class="w-12 h-0.5 bg-brandOrange rounded-full"></div>
+                            <div class="w-1.5 h-0.5 bg-brandOrange/30 rounded-full"></div>
+                        </div>
+                    </div>
+                    <p class="text-xs sm:text-sm md:text-[15.5px] text-gray-600 font-medium text-justify pt-4" style="font-feature-settings: 'halt'; letter-spacing: 0.02em; line-height: 1.8;">
+                        25年間現場に立つ中で、私は利用者様の「あなたに出会えてよかった」という言葉に何度も救われ、介護が「人生を支える尊い仕事」だと実感してきました。<br>
+                        一方で、志の高い心優しい職員たちが、環境の壁にぶつかり悩んでしまう姿も数多く見てきました。
+                    </p>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="bg-white rounded-2xl p-5 sm:p-8 shadow-xl shadow-brandGreen/5 border border-white/80 space-y-4">
+                    <div class="flex flex-col items-start gap-1">
+                        <h5 class="text-lg sm:text-xl font-black text-gray-800 flex items-center gap-2.5 relative pl-4">
+                            <span class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-brandOrange to-orange-300 rounded-full"></span>
+                            経営者様と共に、職員の笑顔を守る
+                        </h5>
+                        <div class="flex w-full items-center gap-1.5 mt-1.5">
+                            <div class="w-12 h-0.5 bg-brandOrange rounded-full"></div>
+                            <div class="w-1.5 h-0.5 bg-brandOrange/30 rounded-full"></div>
+                        </div>
+                    </div>
+                    <p class="text-xs sm:text-sm md:text-[15.5px] text-gray-600 font-medium text-justify pt-4" style="font-feature-settings: 'halt'; letter-spacing: -0.005em; line-height: 2.0;">
+                        経営者の皆様も、「理想のケア」と「人手不足や教育の壁」の間でジレンマを抱えていらっしゃるのではないでしょうか。<br>
+                        大切な職員を守り、質の高いケアを届けるためには、個人の頑張りだけでなく「現場を支える仕組み」を創ることが不可欠です。
+                    </p>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="bg-white rounded-2xl p-5 sm:p-8 shadow-xl shadow-brandGreen/5 border border-white/80 space-y-4">
+                    <div class="flex flex-col items-start gap-1">
+                        <h5 class="text-lg sm:text-xl font-black text-gray-800 flex items-center gap-2.5 relative pl-4">
+                            <span class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-brandOrange to-orange-300 rounded-full"></span>
+                            学びを通じて、誇りあふれる現場へ
+                        </h5>
+                        <div class="flex w-full items-center gap-1.5 mt-1.5">
+                            <div class="w-12 h-0.5 bg-brandOrange rounded-full"></div>
+                            <div class="w-1.5 h-0.5 bg-brandOrange/30 rounded-full"></div>
+                        </div>
+                    </div>
+                    <p class="text-xs sm:text-sm md:text-[15.5px] text-gray-600 font-medium text-justify pt-4" style="font-feature-settings: 'halt'; letter-spacing: 0.04em; line-height: 1.8;">
+                        この現状を前向きに変えていくため、私は株式会社APDを設立しました。<br>
+                        オンライン研修や専門相談といった「学びを止めない仕組み」を提供し、職員が孤立せず、自信と誇りを持って働ける環境づくりを全力でサポートします。<br>
+                        <br>
+                        職員がイキイキと輝き、現場に心からの笑顔があふれる未来へ。<br>
+                        まずは貴社のお悩みをお聞かせください。<br>
+                        共に新しい介護の形を創っていきましょう。
+                    </p>
+                </div>
+
+                <!-- NAVIGATION BUTTONS -->
+                <div class="pt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="service.html" class="inline-flex items-center justify-center bg-brandOrange hover:bg-brandOrangeHover text-white font-bold text-lg px-8 py-3.5 rounded-full shadow-lg shadow-brandOrange/35 hover:shadow-brandOrange/50 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-xs min-h-[48px] text-center">
+                     <i class="fa-solid fa-circle-info mr-2 text-lg"></i> サービス概要へ
+                    </a>
+                    <a href="company.html" class="inline-flex items-center justify-center bg-brandOrange hover:bg-brandOrangeHover text-white font-bold text-lg px-8 py-3.5 rounded-full shadow-lg shadow-brandOrange/35 hover:shadow-brandOrange/50 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-xs min-h-[48px] text-center">
+                     <i class="fa-solid fa-building mr-2 text-lg"></i> 会社概要へ
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brandGreen text-white py-10 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <!-- Social Accounts -->
+            <div class="space-y-4">
+                <h4 class="text-base sm:text-lg font-bold tracking-wider">公式SNSアカウント</h4>
+                <div class="flex justify-center items-center gap-5 sm:gap-6 text-2xl sm:text-3xl md:text-4xl">
+                    <a href="https://www.instagram.com/kaigo_no_hidechannel/" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/apdream515/" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@hideking.apd" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.threads.com/@kaigo_no_hidechannel?xmt=AQG0LuBmjoE1n0MAFNwBetNoZ9_e8P_bYN0vwNJ0SV557wQ" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2 flex items-center justify-center" title="Threads">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-threads w-[1em] h-[1em]" viewBox="0 0 16 16">
+                            <path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@HIDEKING-APD" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Brand / Logo bottom -->
+            <div class="space-y-2 pt-4 border-t border-white/20">
+                <div class="flex justify-center items-center gap-2">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="assets/images/APD_logo.svg" alt="株式会社APD" class="h-10 w-auto">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-black text-white tracking-wider">株式会社APD</h3>
+                    </div>
+                    </a>
+                </div>
+                <p class="text-sm sm:text-base text-[#004619] font-medium">介護の未来を創る</p>
+            </div>
+
+            <!-- Navigation Links in Footer -->
+            <div class="flex flex-wrap justify-center items-center gap-x-3 sm:gap-x-4 gap-y-2.5 text-sm text-white font-medium">
+                <a href="index.html" class="hover:text-[#fef263] py-1">ホーム</a>
+                <span class="opacity-30">|</span>
+                <a href="sns.html" class="hover:text-[#fef263] py-1">YouTube・SNS</a>
+                <span class="opacity-30">|</span>
+                <a href="service.html" class="hover:text-[#fef263] py-1">サービス概要</a>
+                <span class="opacity-30">|</span>
+                <a href="#" class="text-[#fef263] py-1">代表挨拶</a>
+                <span class="opacity-30">|</span>
+                <a href="company.html" class="hover:text-[#fef263] py-1">会社概要</a>
+                <span class="opacity-30">|</span>
+                <a href="contact.html" class="hover:text-[#fef263] py-1">お問い合わせ</a>
+                <span class="opacity-30">|</span>
+                <a href="policy.html" class="hover:text-[#fef263] py-1">プライバシーポリシー</a>
+                <span class="opacity-30">|</span>
+                <a href="tokusho.html" class="hover:text-[#fef263] py-1">特定商取引法に基づく表記</a>
+            </div>
+
+            <!-- Copyright -->
+            <p class="text-xs sm:text-sm font-regular text-[#004619] pt-3">
+                &copy; 2026 株式会社APD. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

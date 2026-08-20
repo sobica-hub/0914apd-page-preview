@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サービス概要 - 株式会社APD</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans JP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Social Icons & Service Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGreen: '#1bbb86',     /* 鮮やかなミントグリーン */
+                        brandGreenLight: '#e8f8f3',/* 優しい緑の背景用 */
+                        brandOrange: '#ff8d42',    /* アクセントオレンジ */
+                        brandOrangeHover: '#e67325',
+                        brandOrangeLight: '#fff4ec',/* オレンジの背景用 */
+                        textDark: '#2d3748',       /* 柔らかい黒 */
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                    }
+                }
+            }
+        };
+
+        function imageLoaded(imgElement) {
+            const src = imgElement.getAttribute('src');
+            if (!src || src.trim() === "" || src === "#") {
+                imageLoadError(imgElement);
+                return;
+            }
+            imgElement.classList.remove('hidden');
+            const placeholder = imgElement.nextElementSibling;
+            if (placeholder && placeholder.classList.contains('placeholder-fallback')) {
+                placeholder.classList.add('hidden');
+            }
+        }
+
+        function imageLoadError(imgElement) {
+            imgElement.classList.add('hidden');
+            const placeholder = imgElement.nextElementSibling;
+            if (placeholder && placeholder.classList.contains('placeholder-fallback')) {
+                placeholder.classList.remove('hidden');
+            }
+        }
+    </script>
+
+    <!-- CUSTOM RESPONSIVE CSS RULE & WAVE PATTERNS -->
+    <style>
+        @media screen and (max-width:767px){
+            br.nobr { display: contents; }
+        }
+        /* メディアクエリを用いた文字詰めと行間調整 */
+        .txt-rich {
+            font-feature-settings: 'palt';
+            letter-spacing: -0.01em;
+            line-height: 2.2;
+        }
+    </style>
+
+    <style>
+     @font-face {
+      font-family: 'Segoe Fluent Icons';
+      src: local('Segoe Fluent Icons'),
+           url('https://cdn.jsdelivr.net/gh/unoplatform/uno.fonts@master/webfonts/uno-fluentui-assets.woff2') format('woff2'),
+           url('https://cdn.jsdelivr.net/gh/unoplatform/uno.fonts@master/webfonts/uno-fluentui-assets.ttf') format('truetype');
+      font-display: swap;
+     }
+     .fluent-icon {
+      /* フォントファミリーの指定 */
+      font-family: 'Segoe Fluent Icons', sans-serif !important;
+      /* アイコンの基本スタイル */
+      font-size: 24px;
+     }
+     </style>
+</head>
+<body class="font-sans bg-white text-textDark antialiased leading-relaxed overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header class="bg-white border-b border-gray-100 py-4 px-3 md:px-8 overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-row justify-between items-center gap-1 sm:gap-2">
+            <!-- Logo & Brand Name -->
+            <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 group flex-shrink-0">
+                
+                <img src="assets/images/APD_logo.svg" alt="株式会社APD" class="h-10 sm:h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105">
+
+                <div class="flex-shrink-0">
+                    <h1 class="text-sm sm:text-lg md:text-2xl font-black tracking-wider text-gray-800 leading-none">株式会社APD</h1>
+                </div>
+            </a>
+            
+            <!-- Catchphrase (Right) -->
+            <div class="text-right text-xs text-gray-600 font-bold flex-shrink-1 min-w-0 max-w-[170px] sm:max-w-none">
+                <p class="text-brandGreen font-extrabold text-[9px] sm:text-xs leading-none">【介護事業者向け】</p>
+                <p class="text-[8px] sm:text-[10px] md:text-[11px] text-gray-500 font-medium mt-1 leading-tight sm:leading-snug break-all sm:break-normal">
+                    オンライン法定研修・運営指導対策・<br class="inline sm:hidden">認知症GH経営支援
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="bg-brandGreen sticky top-0 z-40 shadow-md overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex justify-between sm:justify-center items-center py-3 sm:py-3.5 px-2 text-white font-bold text-xs sm:text-sm md:text-base gap-1 sm:gap-2 w-full max-w-full sm:tracking-normal">
+                <a href="index.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">ホーム</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="sns.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">YouTube<br class="inline sm:hidden">・SNS</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="#" class="px-1 py-2 text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">サービス<br class="inline sm:hidden">概要</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="profile.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">代表<br class="inline sm:hidden">挨拶</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="company.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">会社<br class="inline sm:hidden">概要</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="contact.html" class="px-1 py-2 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">お問い<br class="inline sm:hidden">合わせ</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="w-full min-h-screen bg-white overflow-hidden pb-16">
+
+        <!-- HERO SECTION (ページタイトル) -->
+        <section class="w-full relative border-b border-emerald-100">
+            <div class="w-full bg-emerald-50 aspect-[16/6] md:aspect-[21/6] min-h-[160px] md:max-h-[350px] flex items-center justify-center relative overflow-hidden">
+                <img src="assets/images/PKU4161360PAR58401_TP_V.jpg" alt="サービス概要メインビジュアル" class="absolute inset-0 w-full h-full object-cover z-0 hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                
+                <div class="placeholder-fallback absolute inset-0 bg-gradient-to-br from-teal-800 via-emerald-900 to-slate-900 flex items-center justify-center z-0 opacity-90">
+                    <svg class="absolute inset-0 w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 100 100">
+                        <circle cx="20" cy="20" r="10" fill="#1bbb86" fill-opacity="0.2"/>
+                        <circle cx="80" cy="50" r="15" fill="#1bbb86" fill-opacity="0.1"/>
+                        <circle cx="50" cy="80" r="8" fill="#1bbb86" fill-opacity="0.15"/>
+                        <path d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z" fill="#1bbb86" fill-opacity="0.08"/>
+                    </svg>
+                </div>
+
+                <!-- Overlay content -->
+                <div class="relative z-10 text-center px-4">
+                    <h2 class="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-widest drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
+                        サービス概要
+                    </h2>
+                    <p class="text-[10px] sm:text-xs md:text-sm font-bold text-white/90 tracking-[0.3em] uppercase mt-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
+                        SERVICES&SOLUTIONS
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION:APDが選ばれる理由 -->
+        <section class="pt-6 sm:pt-10 pb-12 sm:pb-20 bg-white w-full relative overflow-hidden">
+            <!-- Background Wave SVG -->
+            <div class="absolute inset-x-0 bottom-0 top-[70px] z-0 pointer-events-none select-none flex flex-col justify-end">
+                <svg class="w-full h-[400px] sm:h-auto md:h-auto overflow-visible" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 650" preserveAspectRatio="none">
+                    <!-- 1つ目の波-->
+                        <path d="M0 132L106.7 168.5C213.3 205 426.7 278 640 280.5C853.3 283 1066.7 215 1280 178.2C1493.3 141.3 1706.7 135.7 1813.3 132.8L1920 130L1920 651L1813.3 651C1706.7 651 1493.3 651 1280 651C1066.7 651 853.3 651 640 651C426.7 651 213.3 651 106.7 651L0 651Z" fill="#ffffff"></path>
+                    <!-- 2つ目の波-->
+                        <path d="M0 231L106.7 245.7C213.3 260.3 426.7 289.7 640 284.2C853.3 278.7 1066.7 238.3 1280 225.5C1493.3 212.7 1706.7 227.3 1813.3 234.7L1920 242L1920 651L1813.3 651C1706.7 651 1493.3 651 1280 651C1066.7 651 853.3 651 640 651C426.7 651 213.3 651 106.7 651L0 651Z" fill="#defdf2"></path>
+                    <!-- 3つ目の波-->
+                        <path d="M0 356L106.7 341.8C213.3 327.7 426.7 299.3 640 286.2C853.3 273 1066.7 275 1280 290C1493.3 305 1706.7 333 1813.3 347L1920 361L1920 651L1813.3 651C1706.7 651 1493.3 651 1280 651C1066.7 651 853.3 651 640 651C426.7 651 213.3 651 106.7 651L0 651Z" fill="#bbfbe5"></path>
+                    <!-- 4つ目の波-->
+                        <path d="M0 433L106.7 423.7C213.3 414.3 426.7 395.7 640 401C853.3 406.3 1066.7 435.7 1280 452.5C1493.3 469.3 1706.7 473.7 1813.3 475.8L1920 478L1920 651L1813.3 651C1706.7 651 1493.3 651 1280 651C1066.7 651 853.3 651 640 651C426.7 651 213.3 651 106.7 651L0 651Z" fill="#acfae0"></path>
+                    <!-- 5つ目の波-->
+                        <path d="M0 475L106.7 478.2C213.3 481.3 426.7 487.7 640 476.2C853.3 464.7 1066.7 435.3 1280 429.7C1493.3 424 1706.7 442 1813.3 451L1920 460L1920 651L1813.3 651C1706.7 651 1493.3 651 1280 651C1066.7 651 853.3 651 640 651C426.7 651 213.3 651 106.7 651L0 651Z" fill="#bbfbe5"></path>
+                    <!-- 6つ目の波-->
+                        <path d="M0 515L106.7 510C213.3 505 426.7 495 640 499.5C853.3 504 1066.7 523 1280 537C1493.3 551 1706.7 560 1813.3 564.5L1920 569L1920 651L1813.3 651C1706.7 651 1493.3 651 1280 651C1066.7 651 853.3 651 640 651C426.7 651 213.3 651 106.7 651L0 651Z" fill="#defdf2"></path>
+                    <!-- 7つ目の波-->
+                        <path d="M0 606L106.7 593C213.3 580 426.7 554 640 552.8C853.3 551.7 1066.7 575.3 1280 581.7C1493.3 588 1706.7 577 1813.3 571.5L1920 566L1920 651L1813.3 651C1706.7 651 1493.3 651 1280 651C1066.7 651 853.3 651 640 651C426.7 651 213.3 651 106.7 651L0 651Z" fill="#ffffff"></path>
+                </svg>
+
+                <div class="bg-white h-[120px] w-full -mt-1"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+                
+                <div class="text-center mb-10">
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-black text-gray-800 tracking-wider">
+                        APDが選ばれる理由
+                    </h3>
+                    <div class="flex justify-center items-center gap-1.5 mt-3">
+                        <div class="w-16 h-1 bg-brandGreen rounded-full"></div>
+                        <div class="w-2 h-1 bg-brandGreen/30 rounded-full"></div>
+                    </div>
+                </div>
+
+                <!-- Three Strengths Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Card 01 -->
+                    <div class="w-full max-w-[325px] mx-auto md:max-w-none bg-white rounded-2xl p-6 py-10 shadow-md border border-gray-[#bedfc2]/50 flex flex-col justify-start items-center text-center hover:shadow-lg transition-shadow duration-300 min-h-[380px] md:min-h-[420px]">
+                        <div class="w-full flex flex-col items-center gap-2 pb-3 mb-2">
+                            <span class="text-5xl font-black text-brandGreen tracking-wider leading-none">01</span>
+                            <i class="fa-solid fa-chart-column text-5xl text-brandGreen mt-2"></i>
+                        </div>
+                        <div class="w-full text-center space-y-2 mt-2">
+                            <div class="w-full h-px bg-gray-150 mb-4"></div>
+                            <h4 class="text-base sm:text-lg font-bold text-gray-700 leading-snug">
+                                介護特化型<br>コンサルティング
+                            </h4>
+                            <p class="text-sm sm:text-[15px] text-gray-600 leading-relaxed font-regular pt-2 txt-rich">
+                                中小規模の事業所様へ<br>専門性の高いコンサルティングを提供します。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 02 -->
+                    <div class="w-full max-w-[325px] mx-auto md:max-w-none bg-white rounded-2xl p-6 py-10 shadow-md border border-[#bedfc2]/50 flex flex-col justify-start items-center text-center hover:shadow-lg transition-shadow duration-300 min-h-[380px] md:min-h-[420px]">
+                        <div class="w-full flex flex-col items-center gap-2 pb-3 mb-2">
+                            <span class="text-5xl font-black text-brandGreen tracking-wider leading-none">02</span>
+                            <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" class="w-[52px] h-[52px] text-brandGreen mt-2 flex-shrink-0" style="opacity: 1;" xml:space="preserve">
+                                <g>
+                                    <path d="M465.75,336.531l-33.563-71.141c0.094-2.125,0.156-4.25,0.156-6.391c0-89.453-72.5-161.969-161.969-161.969
+                                        c-89.438,0-161.938,72.516-161.938,161.969c0,50.281,22.906,95.219,58.875,124.938v57.25c0,5.578,3.344,10.625,8.5,12.797
+                                        l134.125,56.906c4.281,1.828,9.219,1.375,13.125-1.203c3.875-2.563,6.219-6.938,6.219-11.594v-48.5
+                                        c0-7.688,6.219-13.922,13.906-13.922h68.688c7.688,0,13.938-6.234,13.938-13.922v-41.813c0-5.328,3.031-10.188,7.813-12.531
+                                        l25.625-12.422C466.094,351.656,469,343.422,465.75,336.531z M271.563,397.438c-6.969,0-13.063-3.891-16.156-9.625h32.281
+                                        C284.594,393.547,278.531,397.438,271.563,397.438z M304.25,361.781c0,2.469-1.25,4.641-3.156,5.938
+                                        c1.906,1.281,3.156,3.453,3.156,5.922c0,3.953-3.219,7.172-7.188,7.172h-51.375c-3.969,0-7.156-3.219-7.156-7.172
+                                        c0-2.469,1.25,4.641,3.125-5.922c-1.875-1.297-3.125-3.469-3.125-5.938c0-2.438,1.219-4.594,3.094-5.891
+                                        c-1.875-1.297-3.094-3.453-3.094-5.891c0-3.969,3.188-7.188,7.156-7.188h51.375c3.969,0,7.188,3.219,7.188,7.188
+                                        c0,2.438-1.219,4.594-3.094,5.891C303.031,357.188,304.25,359.344,304.25,361.781z M313.094,302.672
+                                        c-11.969,7.922-13.031,13.813-13.031,28.563h-57.344c0-14.75-1.094-20.641-13.031-28.563
+                                        c-20.531-13.547-34.063-36.813-34.063-63.234c0-41.828,33.938-75.734,75.75-75.734c41.844,0,75.75,33.906,75.75,75.734
+                                        C347.125,265.859,333.594,289.125,313.094,302.672z" fill="currentColor"></path>
+                                    <rect x="258.563" width="23.688" height="53.844" fill="currentColor"></rect>
+                                    <polygon points="178.094,75.406 157.563,87.25 130.625,40.609 151.156,28.781" fill="currentColor"></polygon>
+                                    <polygon points="98.656,146.156 86.813,166.688 40.156,139.75 52.031,119.234" fill="currentColor"></polygon>
+                                    <polygon points="65.25,247.156 65.25,270.844 11.375,270.844 11.406,247.156" fill="currentColor"></polygon>
+                                    <polygon points="488.781,119.234 500.625,139.75 454,166.656 442.156,146.141" fill="currentColor"></polygon>
+                                    <polygon points="389.625,28.781 410.156,40.625 383.219,87.25 362.719,75.391" fill="currentColor"></polygon>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="w-full text-center space-y-2 mt-2">
+                            <div class="w-full h-px bg-gray-150 mb-4"></div>
+                            <h4 class="text-base sm:text-lg font-bold text-gray-700 leading-snug">
+                                豊富な現場経験
+                            </h4>
+                            <p class="text-sm sm:text-[15px] text-gray-600 leading-relaxed font-regular pt-2 txt-rich">
+                                現場を知り尽くしているからこそ、<br>机上の空論ではない解決策を提示します。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 03 -->
+                    <div class="w-full max-w-[325px] mx-auto md:max-w-none bg-white rounded-2xl p-6 py-10 shadow-md border border-[#bedfc2]/50 flex flex-col justify-start items-center text-center hover:shadow-lg transition-shadow duration-300 min-h-[380px] md:min-h-[420px]">
+                        <div class="w-full flex flex-col items-center gap-2 pb-3 mb-2">
+                            <span class="text-5xl font-black text-brandGreen tracking-wider leading-none">03</span>
+                            <i class="fa-solid fa-hands-holding-child text-5xl text-brandGreen mt-2"></i>
+                        </div>
+                        <div class="w-full text-center space-y-1 mt-2">
+                            <div class="w-full h-px bg-gray-150 mb-4"></div>
+                            <h4 class="text-base sm:text-lg font-bold text-gray-700 leading-tight">
+                                経営効率<span class="block text-xs text-gray-700 font-bold my-0.5">×</span>ケアの向上
+                            </h4>
+                            <p class="text-sm sm:text-[15px] text-gray-600 leading-relaxed font-regular pt-2 txt-rich">
+                                2つの視点を両立した<br>「現場で本当に使える」<br>実践的サポートを行います。
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION:会議画像エリア-->
+        <section class="py-6 pb-12 bg-white w-full">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <!-- Middle Meeting Photo Box -->
+                <div class="w-full bg-slate-100 rounded-2xl overflow-hidden aspect-[21/9] min-h-[120px] md:max-h-[220px] flex items-center justify-center relative border border-slate-200 shadow-sm">
+                    <img src="assets/images/PKU4151341PAR58331_TP_V.jpg" alt="打ち合わせ・ミーティング風景" class="w-full h-full object-cover hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                    <div class="placeholder-fallback flex flex-col items-center text-center p-4 text-emerald-600">
+                        <div class="w-10 h-10 bg-brandGreen/10 rounded-full flex items-center justify-center mb-1">
+                            <i class="fa-solid fa-users-viewfinder text-lg"></i>
+                        </div>
+                        <p class="font-extrabold text-[10px] sm:text-xs">会議・サービス提供イメージ領域</p>
+                        <p class="text-[9px] opacity-75 mt-0.5">推奨サイズ: 1200px × 514px (21:9)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION:3大サービス詳細 -->
+        <section class="py-6 sm:py-8 bg-white w-full">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+                <!-- SERVICE CARD 1 -->
+                <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg shadow-gray-500/5 border border-[#bedfc2]/50 mb-10 space-y-6">
+                    
+                    <!-- Header with Icon, Orange Line, and Title -->
+                    <div class="flex items-center border-b border-gray-150 pb-4">
+                        <div class="w-9 text-brandOrange flex-shrink-0 flex items-center justify-center text-3xl">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <span class="w-[3px] h-6 bg-brandOrange rounded-full flex-shrink-0 mx-3"></span>
+                        <h4 class="text-lg sm:text-xl md:text-2xl font-black text-gray-800 leading-tight">
+                            <span class="inline-block">1.オンライン法定研修</span><br>
+                            <span class="inline-block pl-[0.6rem] sm:pl-[0.7rem]">（1万円〜）</span>
+                        </h4>
+                    </div>
+                    <!-- Subtitle & Content -->
+                    <div class="space-y-4">
+                        <h5 class="text-base sm:text-base md:text-lg font-bold text-gray-700 leading-snug">
+                         現場の負担を抑え、コンプライアンスとスキルアップを両立。
+                        </h5>
+                        <div class="text-base sm:text-sm md:text-base text-gray-600 font-regular txt-rich">
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-1.5 leading-relaxed">
+                                    <i class="fa-solid fa-circle-check text-brandGreen text-base mt-1 flex-shrink-0"></i>
+                                    <span><b>監査対応：</b>必須の法定研修を完全網羅</span>
+                                </li>
+                                <li class="flex items-start gap-1.5 leading-relaxed">
+                                    <i class="fa-solid fa-circle-check text-brandGreen text-base mt-1 flex-shrink-0"></i>
+                                    <span><b>コスト減：</b>研修に伴う手間・シフト調整・費用を大幅削減</span>
+                                </li>
+                                <li class="flex items-start gap-1.5 leading-relaxed">
+                                    <i class="fa-solid fa-circle-check text-brandGreen text-base mt-1 flex-shrink-0"></i>
+                                    <span><b>実践的：</b>現場経験に根ざした内容でスタッフが育つ</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Characteristics Box -->
+                    <div class="bg-brandGreenLight/60 border border-brandGreen/20 rounded-xl p-4 sm:p-5 space-y-3">
+                        <p class="text-lg sm:text-xl md:text-xl font-bold text-brandGreen flex items-center gap-1.5" style="font-feature-settings: 'palt';">
+                            【料金<small class="font-bold text-brandGreen" style="font-size: 80%; font-feature-settings: 'palt';">（税込）</small>】
+                        </p>
+                        <div class="text-[15px] sm:text-sm md:text-base text-gray-600 font-regular txt-rich py-1">
+                            <ul class="space-y-3.5">
+                                <li class="leading-relaxed flex items-start gap-1">
+                                    <span class="text-brandGreen font-medium flex-shrink-0">・</span>
+                                    <span><b>オンライン法定研修：</b><br class="inline sm:hidden">1事業所あたり10,000円／<small>月</small></span>
+                                </li>
+                                <li class="leading-relaxed flex items-start gap-1">
+                                    <span class="text-brandGreen font-medium flex-shrink-0">・</span>
+                                    <span><b>新入社員法定研修動画：</b>5,000円</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- YouTube Player -->
+                    <div class="w-full max-w-2xl mx-auto bg-black rounded-2xl overflow-hidden relative z-10">
+                    <div class="aspect-video">
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/nbhsRngZaAk?rel=0"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                    <!-- CTA Button -->
+                    <div class="pt-2 text-center">
+                        <a href="contact.html" class="inline-flex items-center justify-center bg-brandOrange hover:bg-brandOrangeHover text-white font-bold text-sm sm:text-base px-10 py-3 rounded-full shadow-lg shadow-brandOrange/35 hover:shadow-brandOrange/50 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-xs min-h-[44px]">
+                            <i class="fa-solid fa-envelope mr-2"></i>お問い合わせ
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- SERVICE CARD 2 -->
+                <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg shadow-gray-500/5 border border-[#bedfc2]/50 mb-10 space-y-6">
+                    
+                    <!-- Header with Icon, Orange Line, and Title -->
+                    <div class="flex items-start border-b border-gray-150 pb-4">
+                        <div class="w-9 h-9 text-brandOrange flex-shrink-0 flex items-center justify-center mt-[2px]">
+                            <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" class="w-8 h-8 flex-shrink-0" style="opacity: 1;" xml:space="preserve">
+                                <g>
+                                    <path d="M484.516,19.531l-48.297,69.797l47.984,69.344h-54.266l-47.969-69.344l49.813-72h-68.625l-49.813,72
+                                        l47.969,69.344h-54.25l-47.969-69.344l49.797-72H240.25l-49.813,72l47.984,69.344h-54.266l-47.969-69.344l49.813-72h-68.625
+                                        l-49.813,72l47.969,69.344h-54.25L13.313,89.328l49.813-72H40c-22.094,0-40,17.906-40,40v397.344c0,22.094,17.906,40,40,40h432
+                                        c22.094,0,40-17.906,40-40V57.328C512,39.625,500.438,24.797,484.516,19.531z M480,454.672c0,4.422-3.594,8-8,8H40
+                                        c-4.406,0-8-3.578-8-8v-264h448V454.672z" fill="#ff8d42"></path>
+                                    <path d="M215.688,393.156c0.75,0.438,1.672,0.406,2.406-0.031l101.75-60.719c0.719-0.438,1.156-1.219,1.156-2.063
+                                        c0-0.813-0.438-1.609-1.156-2.031l-101.75-60.734c-0.734-0.422-1.656-0.453-2.406-0.031c-0.719,0.422-1.188,1.234-1.188,2.078
+                                        v60.719v60.734C214.5,391.953,214.969,392.75,215.688,393.156z" fill="#ff8d42"></path>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="w-[3px] h-8 bg-brandOrange rounded-full flex-shrink-0 mx-3 mt-1.5"></span>
+                        <h4 class="text-lg sm:text-xl md:text-2xl font-black text-gray-800 leading-tight">
+                            <span class="inline-block">2.利用契約・重要事項説明書</span><br>
+                            <span class="inline-block pl-[1.125rem] sm:pl-[1.25rem]">説明動画製作</span>
+                        </h4>
+                    </div>
+                    <!-- Subtitle & Content -->
+                    <div class="space-y-4">
+                        <h5 class="text-base sm:text-base md:text-lg font-bold text-gray-700 leading-snug">
+                            契約時の説明を動画化。業務効率を劇的に向上！
+                        </h5>
+                        <div class="text-base sm:text-sm md:text-base text-gray-600 font-regular txt-rich">
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-1.5 leading-relaxed">
+                                    <i class="fa-solid fa-circle-check text-brandGreen text-base mt-1 flex-shrink-0"></i>
+                                    <span><b>契約時間を75%削減：</b>動画に任せて業務時間を大幅カット</span>
+                                </li>
+                                <li class="flex items-start gap-1.5 leading-relaxed">
+                                    <i class="fa-solid fa-circle-check text-brandGreen text-base mt-1 flex-shrink-0"></i>
+                                    <span><b>管理職の負担軽減：</b>同じ内容の繰り返しによる疲労を解消</span>
+                                </li>
+                                <li class="flex items-start gap-1.5 leading-relaxed">
+                                    <i class="fa-solid fa-circle-check text-brandGreen text-base mt-1 flex-shrink-0"></i>
+                                    <span><b>トラブル防止：</b>説明のムラをなくし「言った・言わない」を防止</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Characteristics Box -->
+                    <div class="bg-brandGreenLight/60 border border-brandGreen/20 rounded-xl p-4 sm:p-5 space-y-3">
+                        <p class="text-lg sm:text-xl md:text-xl font-bold text-brandGreen flex items-center gap-1.5" style="font-feature-settings: 'palt';">
+                            【料金<small class="font-bold text-brandGreen" style="font-size: 80%; font-feature-settings: 'palt';">（税込）</small>】
+                        </p>
+                        <div class="text-[15px] sm:text-sm md:text-base text-gray-600 font-medium txt-rich py-1">
+                            <ul class="space-y-3.5">
+                                <li class="leading-loose">
+                                    <strong>1事業所あたり…</strong><br>製作料（初回のみ）：30,000円＋管理料：月額980円
+                                </li>
+                                <li class="leading-loose text-xs sm:text-xs md:text-sm text-gray-500 font-light">
+                                    ※有料老人ホーム、サービス付き高齢者向け住宅の場合は、別途お見積りとなります。
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- YouTube Player -->
+                    <div class="w-full max-w-2xl mx-auto bg-black rounded-2xl overflow-hidden relative z-10">
+                    <div class="aspect-video">
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/nbhsRngZaAk?rel=0"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                    <!-- CTA Button -->
+                    <div class="pt-2 text-center">
+                        <a href="contact.html" class="inline-flex items-center justify-center bg-brandOrange hover:bg-brandOrangeHover text-white font-bold text-sm sm:text-base px-10 py-3 rounded-full shadow-lg shadow-brandOrange/35 hover:shadow-brandOrange/50 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-xs min-h-[44px]">
+                            <i class="fa-solid fa-envelope mr-2"></i>お問い合わせ
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- SERVICE CARD 3 -->
+                <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg shadow-gray-500/5 border border-[#bedfc2]/50 mb-6 space-y-6">
+                    
+                    <!-- Header with Icon, Orange Line, and Title -->
+                    <div class="flex items-center border-b border-gray-150 pb-4">
+                        <div class="w-9 text-brandOrange text-3xl flex-shrink-0 flex items-center justify-center">
+                            <i class="fa-solid fa-user-group"></i>
+                        </div>
+
+                        <span class="w-[3px] h-6 bg-brandOrange rounded-full flex-shrink-0 mx-3"></span>
+                        <h4 class="text-lg sm:text-xl md:text-2xl font-black text-gray-800 leading-tight">
+                            3.認知症GH経営改善支援
+                        </h4>
+                    </div>
+
+                    <!-- Subtitle & Content -->
+                    <div class="space-y-4">
+                        <h5 class="text-sm sm:text-base md:text-lg font-bold text-gray-700 leading-snug">
+                            経営と現場の視点でホームの再生と成長をサポートします。
+                        </h5>
+
+                        <div class="text-base sm:text-sm md:text-base text-gray-600 font-regular txt-rich">
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-1.5 leading-relaxed">
+                                    <i class="fa-solid fa-circle-check text-brandGreen mt-1 flex-shrink-0"></i>
+                                    <span><b>収益向上：</b>稼働率UPと加算取得の支援</span>
+                                </li>
+                                <li class="flex items-start gap-1.5 leading-relaxed">
+                                    <i class="fa-solid fa-circle-check text-brandGreen mt-1 flex-shrink-0"></i>
+                                    <span><b>現場DX：</b>ICT活用による業務効率化</span>
+                                </li>
+                                <li class="flex items-start gap-1.5 leading-relaxed">
+                                    <i class="fa-solid fa-circle-check text-brandGreen mt-1 flex-shrink-0"></i>
+                                    <span><b>定着率UP：</b>負担軽減で長く働ける環境作り</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Characteristics Box -->
+                    <div class="bg-brandGreenLight/60 border border-brandGreen/20 rounded-xl p-4 sm:p-5 space-y-1">
+                        <p class="text-lg sm:text-xl md:text-xl font-bold text-brandGreen flex items-center gap-1.5" style="font-feature-settings: 'palt';">
+                            【料金】
+                        </p>
+                        <div class="text-[15px] sm:text-sm md:text-base text-gray-600 font-medium txt-rich py-1">
+                            <ul class="space-y-3.5">
+                                <li class="leading-loose">
+                                    詳細はお問い合わせ後、ヒアリングの上でお見積りいたします。
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Blackboard / Lecture Placeholder -->
+                    <div class="w-full flex items-center justify-center py-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-full max-w-[325px] sm:max-w-[350px] h-auto mx-auto" viewBox="0 0 960 654.477" style="opacity: 1;" xml:space="preserve" role="img" artist="Katerina Limpitsouni" source="https://undraw.co/">
+                        <g transform="translate(-545.961 -298)">
+                        <path d="M794.655,692.743H613.368c-.263,0-.476-.614-.476-1.372s.213-1.372.476-1.372H794.655c.263,0,.476.614.476,1.372S794.918,692.743,794.655,692.743Z" transform="translate(710.83 251.513)" fill="#e6e6e6"/>
+                        <path d="M896.189,798.893s-12.939,10.9-19.748,10.215-19.749-.681-14.3,6.81,27.92,11.577,37.454,12.258,30.644,1.362,29.282-2.724-2.724-23.154-8.172-24.516S896.189,798.893,896.189,798.893Z" transform="translate(492.324 123.786)" fill="#090814"/>
+                        <path d="M896.189,798.893s-12.939,10.9-19.748,10.215-19.749-.681-14.3,6.81,27.92,11.577,37.454,12.258,30.644,1.362,29.282-2.724-2.724-23.154-8.172-24.516S896.189,798.893,896.189,798.893Z" transform="translate(541.506 123.786)" fill="#090814"/>
+                        <path d="M884.956,494.994l-.032,243.263c-.026,1.525,0,3.99,0,3.99s-4.464,1.52-5.983,1.382h-24.9a5.487,5.487,0,0,1-4.974-5.04l-10.28-155.41a1.372,1.372,0,0,0-2.738.054L833.6,733.708c-.112,2.948,3.5,8.538.554,8.539l-34.389-2.163c-2.9,0-1.372-1.8-1.549-4.7L783.447,493.622l87.792-21.948Z" transform="translate(582.116 188.021)" fill="#2f2e41"/>
+                        <path d="M21.405,65.072a33.694,33.694,0,1,1,29.186-2.226l3.761,19.7L21.405,86.125Z" transform="translate(1369.701 403.443)" fill="#ed9da0"/>
+                        <path d="M875.266,577H209.281a23.346,23.346,0,0,1-23.32-23.32V231.32A23.346,23.346,0,0,1,209.281,208H875.266a23.346,23.346,0,0,1,23.32,23.32V553.681A23.346,23.346,0,0,1,875.266,577ZM209.281,210.743A20.6,20.6,0,0,0,188.7,231.32V553.681a20.6,20.6,0,0,0,20.576,20.576H875.266a20.6,20.6,0,0,0,20.576-20.576V231.32a20.6,20.6,0,0,0-20.576-20.576Z" transform="translate(360 90)" fill="#3f3d56"/>
+                        <circle cx="12.346" cy="12.346" r="12.346" transform="translate(661.531 353.556)" fill="#ccc"/>
+                        <circle cx="12.346" cy="12.346" r="12.346" transform="translate(661.531 400.196)" fill="#ccc"/>
+                        <circle cx="12.346" cy="12.346" r="12.346" transform="translate(661.531 446.835)" fill="#ccc"/>
+                        <circle cx="12.346" cy="12.346" r="12.346" transform="translate(661.531 493.474)" fill="#ccc"/>
+                        <circle cx="12.346" cy="12.346" r="12.346" transform="translate(869.351 586.754)" fill="#ccc"/>
+                        <circle cx="12.346" cy="12.346" r="12.346" transform="translate(780.188 586.754)" fill="#ccc"/>
+                        <circle cx="12.346" cy="12.346" r="12.346" transform="translate(1053.166 586.754)" fill="#ccc"/>
+                        <circle cx="12.346" cy="12.346" r="12.346" transform="translate(959.887 586.754)" fill="#ccc"/>
+                        <path d="M730.621,259.243H324.583a1.372,1.372,0,0,1,0-2.744H730.621a1.372,1.372,0,0,1,0,2.744Z" transform="translate(411.022 108.03)" fill="#ccc"/>
+                        <path d="M730.621,293.243H324.583a1.372,1.372,0,0,1,0-2.743H730.621a1.372,1.372,0,0,1,0,2.743Z" transform="translate(411.022 120.669)" fill="#ccc"/>
+                        <path d="M730.621,327.244H324.583a1.372,1.372,0,0,1,0-2.744H730.621a1.372,1.372,0,0,1,0,2.744Z" transform="translate(411.022 133.309)" fill="#ccc"/>
+                        <path d="M730.621,361.243H324.583a1.372,1.372,0,0,1,0-2.743H730.621a1.372,1.372,0,0,1,0,2.743Z" transform="translate(411.022 145.949)" fill="#ccc"/>
+                        <path d="M392.85,408.255H353.07a6.867,6.867,0,0,1-6.859-6.859V364.359a6.867,6.867,0,0,1,6.859-6.859H392.85a6.867,6.867,0,0,1,6.859,6.859V401.4a6.867,6.867,0,0,1-6.859,6.859Z" transform="translate(419.573 145.577)" fill="#1bbb86"/>
+                        <path d="M457.85,420.894H418.07a6.867,6.867,0,0,1-6.859-6.859V330.359a6.867,6.867,0,0,1,6.859-6.859H457.85a6.867,6.867,0,0,1,6.859,6.859v83.677a6.867,6.867,0,0,1-6.859,6.859Z" transform="translate(443.737 132.937)" fill="#1bbb86"/>
+                        <path d="M523.85,433.534H484.07a6.867,6.867,0,0,1-6.859-6.859V296.359a6.867,6.867,0,0,1,6.859-6.859H523.85a6.867,6.867,0,0,1,6.859,6.859V426.675a6.867,6.867,0,0,1-6.859,6.859Z" transform="translate(468.273 120.298)" fill="#1bbb86"/>
+                        <path d="M591.85,445.8H552.07a6.867,6.867,0,0,1-6.859-6.859V263.359a6.867,6.867,0,0,1,6.859-6.859H591.85a6.867,6.867,0,0,1,6.859,6.859V438.943a6.867,6.867,0,0,1-6.859,6.859Z" transform="translate(493.552 108.03)" fill="#1bbb86"/>
+                        <path d="M689.443,394.706a13,13,0,0,1-2.514-.252h0q-.227-.045-.454-.1L504.609,352.012c-1.975-.46-3.288-1.7-3.052-2.891a1.975,1.975,0,0,1,1.514-1.4,5.508,5.508,0,0,1,2.69-.06l183,38.217c4.12.86,6.981,3.389,6.512,5.756-.245,1.239-1.337,2.2-3.073,2.705A9.915,9.915,0,0,1,689.443,394.706Z" transform="translate(577.013 162.498)" fill="#3f3d56"/>
+                        <path d="M704.568,410.657a13.794,13.794,0,0,0,19.924-7.1L773.5,404.58l-13.577-21.553-44.458,2.334a13.869,13.869,0,0,0-10.9,25.3Z" transform="translate(550.22 155.067)" fill="#ed9da0"/>
+                        <path d="M718.28,412.267l-.255-15.022A6.206,6.206,0,0,1,723.6,391l88.068-8.5,73.375-24.058a17.583,17.583,0,1,1,10.471,33.572L814.3,416.056l-89.694,2.278a6.157,6.157,0,0,1-6.327-6.067Z" transform="translate(557.795 145.628)" fill="#3f3d56"/>
+                        <path d="M782.38,553.563a6.131,6.131,0,0,1-1.872-4.341l-2.273-162.474a39.1,39.1,0,0,1,26.45-37.643c3.156-14.32,19.956-16.114,29.75-15.9a15.206,15.206,0,0,1,12.315,6.753l7.02,10.531,15.474,9.07a39.134,39.134,0,0,1,18.478,42.272l-2.382,10.836A249.029,249.029,0,0,0,887.669,528.8l4.794,18.278a6.172,6.172,0,0,1-6.445,7.72l-5.567-.429a6.164,6.164,0,0,1-5.669-5.539l-.921-9.214a.686.686,0,0,0-1.365,0l-.892,8.92a6.172,6.172,0,0,1-6.047,5.558l-78.781,1.212h-.1A6.134,6.134,0,0,1,782.38,553.563Z" transform="translate(580.177 136.539)" fill="#3f3d56"/>
+                        <path d="M820.212,323.6c.121,4.17,3.016,6.582,6.57,8.766s4.291,4.241,8.361,5.155a3.6,3.6,0,0,0,5.291-3.152l7.151-15.31a89.886,89.886,0,0,0,2.874-13.856c.9-9.019-1.238-18.72-7.533-25.241s-17.211-8.837-24.755-3.813c-8.952-11.433-49.87,13.827-39.776,21.778,1.8,1.414,4.541-.375,6.82-.549s4.833.227,6.281,2c1.892,2.311,1.068,5.753,1.847,8.636a8.064,8.064,0,0,0,10.189,5.222,27.73,27.73,0,0,0,5.284-3.4c1.748-1.164,3.957-2.025,5.925-1.29,2.594.968,3.516,4.144,3.75,6.9a63.915,63.915,0,0,0,1.72,8.152Z" transform="translate(588.757 126.964)" fill="#2f2e41"/>
+                        <path d="M630.544,173l-5.487,67.216L596.25,310.175l42.524-68.588Z" transform="translate(767.618 362.313)" opacity="0.2"/>
+                        <path d="M783.431,518.041a13.794,13.794,0,0,0,.436-21.147l18.352-45.454-24.969,5.042-13.6,42.391a13.869,13.869,0,0,0,19.781,19.168Z" transform="translate(573.701 180.499)" fill="#ed9da0"/>
+                        <path d="M781.261,537.285l-14.134-5.094a6.205,6.205,0,0,1-3.862-7.434l23.316-85.349,3.555-77.137a17.583,17.583,0,1,1,35.1,2.128l-6.351,84.463-29.709,84.662a6.156,6.156,0,0,1-7.918,3.761Z" transform="translate(574.535 141.208)" fill="#3f3d56"/>
+                        <path d="M730.621,395.243H324.583a1.372,1.372,0,0,1,0-2.743H730.621a1.372,1.372,0,0,1,0,2.743Z" transform="translate(411.022 158.588)" fill="#3f3d56"/>
+                        </g>
+                        </svg>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="pt-2 text-center">
+                        <button onclick="openModal('contactModal')" class="inline-flex items-center justify-center bg-brandOrange hover:bg-brandOrangeHover text-white font-bold text-sm sm:text-base px-10 py-3 rounded-full shadow-lg shadow-brandOrange/35 hover:shadow-brandOrange/50 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-xs min-h-[44px]">
+                            詳しくみる
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION:サービス導入までの流れ+お問い合わせ -->
+        <section class="py-12 sm:py-16 bg-white w-full relative overflow-hidden">
+            
+            <!-- Double Wave Background Wrapper -->
+            <div class="absolute inset-x-0 bottom-0 w-full h-[550px] z-0 pointer-events-none select-none flex flex-col justify-end">
+                <svg class="relative w-full h-auto min-h-[120px] md:min-h-[180px] z-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" preserveAspectRatio="none">
+                    <g transform="translate(0, -35)">
+                        <path d="M0 179L32 181.2C64 183.3 128 187.7 192 207.2C256 226.7 320 261.3 384 264.8C448 268.3 512 240.7 576 225.8C640 211 704 209 768 206.2C832 203.3 896 199.7 928 197.8L960 196L960 541L928 541C896 541 832 541 768 541C704 541 640 541 576 541C512 541 448 541 384 541C320 541 256 541 192 541C128 541 64 541 32 541L0 541Z" fill="#e8f8f3"></path>
+                    </g>
+                    <g transform="translate(0, -10)">
+                        <path d="M0 342L32 340.8C64 339.7 128 337.3 192 327.7C256 318 320 301 384 289.3C448 277.7 512 271.3 576 279.5C640 287.7 704 310.3 768 324.2C832 338 896 343 928 345.5L960 348L960 541L928 541C896 541 832 541 768 541C704 541 640 541 576 541C512 541 448 541 384 541C320 541 256 541 192 541C128 541 64 541 32 541L0 541Z" fill="#d5f6ec"></path>
+                    </g>
+                    <g transform="translate(0, 15)">
+                        <path d="M0 415L32 400.8C64 386.7 128 358.3 192 343C256 327.7 320 325.3 384 328.2C448 331 512 339 576 357.3C640 375.7 704 404.3 768 398.7C832 393 896 353 928 333L960 313L960 541L928 541C896 541 832 541 768 541C704 541 640 541 576 541C512 541 448 541 384 541C320 541 256 541 192 541C128 541 64 541 32 541L0 541Z" fill="#c2f4e4"></path>
+                    </g>
+                    <g transform="translate(0, 40)">
+                        <path d="M0 490L32 476.7C64 463.3 128 436.7 192 428.3C256 420 320 430 384 442.8C448 455.7 512 471.3 576 469.7C640 468 704 449 768 434C832 419 896 408 928 402.5L960 397L960 541L928 541C896 541 832 541 768 541C704 541 640 541 576 541C512 541 448 541 384 541C320 541 256 541 192 541C128 541 64 541 32 541L0 541Z" fill="#aef1dc"></path>
+                    </g>
+                </svg>
+                <div class="bg-[#aef1dc] h-[220px] w-full -mt-1 relative z-20"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-30">
+                
+                <div class="text-center mb-10">
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-black text-gray-800 tracking-wider">
+                        サービス導入までの流れ
+                    </h3>
+                    <p class="text-sm sm:text-base md:text-[16px] text-gray-600 font-medium txt-rich mt-3">
+                        開始までは、以下の5つのステップでスムーズに進みます。
+                    </p>
+                    <div class="flex justify-center items-center gap-1.5 mt-3">
+                        <div class="w-16 h-1 bg-brandGreen rounded-full"></div>
+                        <div class="w-2 h-1 bg-brandGreen/30 rounded-full"></div>
+                    </div>
+                </div>
+
+                <!-- Consultation Fallback Image Placeholder -->
+                <div class="mb-10 w-full bg-white rounded-2xl overflow-hidden aspect-[21/9] min-h-[120px] md:max-h-[220px] flex items-center justify-center relative border border-slate-200 shadow-sm">
+                    <img src="assets/images/PK4131310PAR58128_TP_V.jpg" alt="面談・コンサルティング風景イメージ" class="w-full h-full object-cover hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                    <div class="placeholder-fallback flex flex-col items-center text-center p-4 text-emerald-600">
+                        <div class="w-10 h-10 bg-brandGreen/10 rounded-full flex items-center justify-center mb-1">
+                            <i class="fa-regular fa-handshake text-lg"></i>
+                        </div>
+                        <p class="font-extrabold text-[10px] sm:text-xs">面談・ご相談イメージ領域</p>
+                        <p class="text-[9px] opacity-75 mt-0.5">推奨サイズ: 1200px × 514px (21:9)</p>
+                    </div>
+                </div>
+
+                <!-- PC Layout: Clean 2-Row Step Flow (Row 1: Step 1-3, Row 2: Step 4-5) -->
+                <div class="hidden lg:flex flex-col gap-6 max-w-4xl mx-auto mb-10">
+                    <!-- Row 1 (Step 1 -> 2 -> 3) -->
+                    <div class="flex items-center justify-between gap-3">
+                        <!-- Step 1 (説明文あり) -->
+                        <div class="flex-1 bg-white rounded-2xl p-5 min-h-[220px] shadow-sm border border-[#bedfc2]/50 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow">
+
+                            <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-full flex items-center justify-center mb-3 shadow-inner">
+                                <i class="fa-solid fa-comment-dots text-3xl"></i>
+                            </div>
+                            <div class="flex items-baseline gap-0.5 text-brandGreen font-black tracking-wider leading-none">
+                                <span class="text-xs uppercase">STEP</span>
+                                <span class="text-3xl leading-none">1</span>
+                            </div>
+                            <h5 class="text-sm font-bold text-gray-800 mt-2">お問い合わせ</h5>
+                            <p class="text-[11px] text-gray-500 font-medium mt-2 leading-relaxed txt-rich">
+                             まずは無料相談・サンプル動画をご覧ください。
+                            </p>
+                        </div>
+                        <div class="text-brandGreen text-xl flex-shrink-0">
+                         <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+
+                        <!-- Step 2 (説明文なし) -->
+                        <div class="flex-1 bg-white rounded-2xl p-5 min-h-[220px] shadow-sm border border-[#bedfc2]/50 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow">
+                            <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-full flex items-center justify-center mb-3 shadow-inner">
+                                <i class="fa-solid fa-file-pen text-3xl"></i>
+                            </div>
+                            <div class="flex items-baseline gap-0.5 text-brandGreen font-black tracking-wider leading-none">
+                                <span class="text-xs uppercase">STEP</span>
+                                <span class="text-3xl leading-none">2</span>
+                            </div>
+                            <h5 class="text-sm font-bold text-gray-800 mt-2">無料オンライン面談<br>・ヒアリング</h5>
+                        </div>
+                        <div class="text-brandGreen text-xl flex-shrink-0">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+
+                        <!-- Step 3 (説明文なし) -->
+                        <div class="flex-1 bg-white rounded-2xl p-5 min-h-[220px] shadow-sm border border-[#bedfc2]/50 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow">
+                            <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-full flex items-center justify-center mb-3 shadow-inner">
+                                <i class="fa-solid fa-hand-holding-heart text-3xl"></i>
+                            </div>
+                            <div class="flex items-baseline gap-0.5 text-brandGreen font-black tracking-wider leading-none">
+                                <span class="text-xs uppercase">STEP</span>
+                                <span class="text-3xl leading-none">3</span>
+                            </div>
+                            <h5 class="text-sm font-bold text-gray-800 mt-2">ご提案・お見積り</h5>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 (Step 4 -> 5 Center Row) -->
+                    <div class="flex items-center justify-center gap-4 max-w-2xl mx-auto w-full">
+                        <!-- Step 4 (説明文なし) -->
+                        <div class="w-[240px] bg-white rounded-2xl p-5 min-h-[220px] shadow-sm border border-[#bedfc2]/50 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow">
+                            <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-full flex items-center justify-center mb-3 shadow-inner">
+                                <i class="fa-solid fa-handshake text-3xl"></i>
+                            </div>
+                            <div class="flex items-baseline gap-0.5 text-brandGreen font-black tracking-wider leading-none">
+                                <span class="text-xs uppercase">STEP</span>
+                                <span class="text-3xl leading-none">4</span>
+                            </div>
+                            <h5 class="text-sm font-bold text-gray-800 mt-2">ご契約</h5>
+                        </div>
+                        <div class="text-brandGreen text-xl flex-shrink-0">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+
+                        <!-- Step 5 (説明文なし) -->
+                        <div class="w-[240px] bg-gradient-to-br from-brandOrange to-orange-400 text-white rounded-2xl p-5 min-h-[220px] shadow-md border border-orange-300 flex flex-col items-center justify-center text-center transform scale-100 hover:scale-105 duration-300 shadow-brandOrange/25">
+                            <div class="w-14 h-14 bg-white/20 text-white rounded-full flex items-center justify-center mb-3 shadow-inner">
+                                <i class="fa-solid fa-rocket text-3xl"></i>
+                            </div>
+
+                            <div class="flex items-baseline gap-0.5 text-white/95 font-black tracking-wider leading-none">
+                                <span class="text-xs uppercase">STEP</span>
+                                <span class="text-3xl leading-none">5</span>
+                            </div>
+                            <h5 class="text-sm font-bold text-white mt-2">サービス開始</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Layout: Clean Vertical Flow Stack (スマホ表示では max-w-[325px] に統一制限) -->
+                <div class="lg:hidden flex flex-col items-stretch gap-3 mb-10">
+                    <!-- Step 1 (説明文あり・スマホ専用幅) -->
+                    <div class="w-full max-w-[325px] mx-auto bg-white rounded-2xl p-5 shadow-sm border border-[#bedfc2]/50 flex flex-col items-center text-center">
+                        <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-full flex items-center justify-center mb-3 shadow-inner">
+                            <i class="fa-solid fa-comment-dots text-3xl"></i>
+                        </div>
+                        <div class="flex items-baseline gap-0.5 text-brandGreen font-black tracking-wider leading-none">
+                            <span class="text-xs uppercase">STEP</span>
+                            <span class="text-3xl leading-none">1</span>
+                        </div>
+                        <h5 class="text-sm font-bold text-gray-700 mt-2">お問い合わせ</h5>
+                        <p class="text-[11px] text-gray-500 font-regular mt-2 leading-relaxed txt-rich">
+                         まずは無料相談・<br class="inline sm:hidden">サンプル動画をご覧ください。
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-center text-brandGreen py-1 text-lg">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                    <!-- Step 2 (説明文なし・スマホ専用幅) -->
+                    <div class="w-full max-w-[325px] mx-auto bg-white rounded-2xl p-5 shadow-sm border border-[#bedfc2]/50 flex flex-col items-center text-center">
+                        <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-full flex items-center justify-center mb-3 shadow-inner">
+                            <i class="fa-solid fa-file-pen text-3xl"></i>
+                        </div>
+                        <div class="flex items-baseline gap-0.5 text-brandGreen font-black tracking-wider leading-none">
+                            <span class="text-xs uppercase">STEP</span>
+                            <span class="text-3xl leading-none">2</span>
+                        </div>
+                        <h5 class="text-sm font-bold text-gray-700 mt-2">無料オンライン面談<br class="inline sm:hidden">・ヒアリング</h5>
+                    </div>
+                    <div class="flex items-center justify-center text-brandGreen py-1 text-lg">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                    <!-- Step 3 (説明文なし・スマホ専用幅) -->
+                    <div class="w-full max-w-[325px] mx-auto bg-white rounded-2xl p-5 shadow-sm border border-[#bedfc2]/50 flex flex-col items-center text-center">
+                        <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-full flex items-center justify-center mb-3 shadow-inner">
+                            <i class="fa-solid fa-hand-holding-heart text-3xl"></i>
+                        </div>
+                        <div class="flex items-baseline gap-0.5 text-brandGreen font-black tracking-wider leading-none">
+                            <span class="text-xs uppercase">STEP</span>
+                            <span class="text-3xl leading-none">3</span>
+                        </div>
+                        <h5 class="text-sm font-bold text-gray-700 mt-2">ご提案・お見積り</h5>
+                    </div>
+                    <div class="flex items-center justify-center text-brandGreen py-1 text-lg">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                    <!-- Step 4 (説明文なし・スマホ専用幅) -->
+                    <div class="w-full max-w-[325px] mx-auto bg-white rounded-2xl p-5 shadow-sm border border-[#bedfc2]/50 flex flex-col items-center text-center">
+                        <div class="w-14 h-14 bg-brandGreenLight text-brandGreen rounded-full flex items-center justify-center mb-3 shadow-inner">
+                            <i class="fa-solid fa-handshake text-3xl"></i>
+                        </div>
+                        <div class="flex items-baseline gap-0.5 text-brandGreen font-black tracking-wider leading-none">
+                            <span class="text-xs uppercase">STEP</span>
+                            <span class="text-3xl leading-none">4</span>
+                        </div>
+                        <h5 class="text-sm font-bold text-gray-700 mt-2">ご契約</h5>
+                    </div>
+                    <div class="flex items-center justify-center text-brandGreen py-1 text-lg">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                    <!-- Step 5 (説明文なし・スマホ専用幅) -->
+                    <div class="w-full max-w-[325px] mx-auto bg-gradient-to-br from-brandOrange to-orange-400 text-white rounded-2xl p-5 shadow-md border border-orange-300 flex flex-col items-center text-center shadow-brandOrange/25">
+                        <div class="w-14 h-14 bg-white/20 text-white rounded-full flex items-center justify-center mb-3 shadow-inner">
+                            <i class="fa-solid fa-rocket text-3xl"></i>
+                        </div>
+                        <div class="flex items-baseline gap-0.5 text-white/95 font-black tracking-wider leading-none">
+                            <span class="text-xs uppercase">STEP</span>
+                            <span class="text-3xl leading-none">5</span>
+                        </div>
+                        <h5 class="text-sm sm:text-base font-bold text-white mt-2">サービス開始</h5>
+                    </div>
+                </div>
+
+                <!-- Bottom Direct Consultation CTA Button -->
+                <div class="pt-6 text-center">
+                    <a href="contact.html" class="inline-flex items-center justify-center bg-brandGreen hover:bg-emerald-400 text-white font-extrabold text-base sm:text-lg px-12 py-4 rounded-full shadow-lg shadow-brandGreen/25 hover:shadow-brandGreen/40 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-sm min-h-[50px]">
+                        <i class="fa-solid fa-paper-plane mr-2 text-lg"></i> お問い合わせ
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION:遷移リンクナビゲーション -->
+        <section class="py-12 bg-white w-full">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <!-- TRANSITION NAVIGATION BUTTONS -->
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="sns.html" class="inline-flex items-center justify-center bg-[#ff8d42] hover:bg-[#e67325] text-white font-bold text-lg px-8 py-3.5 rounded-full shadow-lg shadow-brandOrange/35 hover:shadow-brandOrange/50 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-xs min-h-[48px] text-center">
+                        <i class="fa-brands fa-youtube mr-2 text-lg"></i> YouTube・SNSへ
+                    </a>
+                    <a href="profile.html" class="inline-flex items-center justify-center bg-[#ff8d42] hover:bg-[#e67325] text-white font-bold text-lg px-8 py-3.5 rounded-full shadow-lg shadow-brandOrange/35 hover:shadow-brandOrange/50 transform hover:-translate-y-0.5 transition-all duration-300 w-full max-w-xs min-h-[48px] text-center">
+                        <i class="fa-solid fa-user-tie mr-2 text-lg"></i> 代表挨拶へ
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brandGreen text-white py-10 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <!-- Social Accounts -->
+            <div class="space-y-4">
+                <h4 class="text-base sm:text-lg font-bold tracking-wider">公式SNSアカウント</h4>
+                <div class="flex justify-center items-center gap-5 sm:gap-6 text-2xl sm:text-3xl md:text-4xl">
+                    <a href="https://www.instagram.com/kaigo_no_hidechannel/" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/apdream515/" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@hideking.apd" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <!-- Threads Inline SVG -->
+                    <a href="https://www.threads.com/@kaigo_no_hidechannel?xmt=AQG0LuBmjoE1n0MAFNwBetNoZ9_e8P_bYN0vwNJ0SV557wQ" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2 flex items-center justify-center" title="Threads">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-threads w-[1em] h-[1em]" viewBox="0 0 16 16">
+                            <path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@HIDEKING-APD" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-2">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Brand / Logo bottom -->
+            <div class="space-y-2 pt-4 border-t border-white/20">
+                <div class="flex justify-center items-center gap-2">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="assets/images/APD_logo.svg" alt="株式会社APD" class="h-10 w-auto">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-black text-white tracking-wider">株式会社APD</h3>
+                    </div>
+                    </a>
+                </div>
+                <p class="text-sm sm:text-base text-[#004619] font-medium">介護の未来を創る</p>
+            </div>
+
+            <!-- Navigation Links in Footer -->
+            <div class="flex flex-wrap justify-center items-center gap-x-3 sm:gap-x-4 gap-y-2.5 text-sm text-white font-medium">
+                <a href="index.html" class="hover:text-[#fef263] py-1">ホーム</a>
+                <span class="opacity-30">|</span>
+                <a href="sns.html" class="hover:text-[#fef263] py-1">YouTube・SNS</a>
+                <span class="opacity-30">|</span>
+                <a href="#" class="text-[#fef263] py-1">サービス概要</a>
+                <span class="opacity-30">|</span>
+                <a href="profile.html" class="hover:text-[#fef263] py-1">代表挨拶</a>
+                <span class="opacity-30">|</span>
+                <a href="company.html" class="hover:text-[#fef263] py-1">会社概要</a>
+                <span class="opacity-30">|</span>
+                <a href="contact.html" class="hover:text-[#fef263] py-1">お問い合わせ</a>
+                <span class="opacity-30">|</span>
+                <a href="policy.html" class="hover:text-[#fef263] py-1">プライバシーポリシー</a>
+                <span class="opacity-30">|</span>
+                <a href="tokusho.html" class="hover:text-[#fef263] py-1">特定商取引法に基づく表記</a>
+            </div>
+
+            <!-- Copyright -->
+            <p class="text-xs sm:text-sm font-regular text-[#004619] pt-3">
+                &copy; 2026 株式会社APD. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
