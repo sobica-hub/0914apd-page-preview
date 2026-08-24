@@ -62,7 +62,8 @@
         <div class="max-w-6xl mx-auto flex flex-row justify-between items-center gap-1 sm:gap-2">
             <!-- Logo & Brand Name -->
             <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 group flex-shrink-0">
-                <img src="assets/images/APD_logo.svg" alt="株式会社APD" class="h-9 sm:h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105">
+                <img src="APD_logo.svg" alt="株式会社APD" class="h-9 sm:h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105">
+
                 <div class="flex-shrink-0">
                     <h1 class="text-sm sm:text-lg md:text-2xl font-black tracking-wider text-gray-800 leading-none">株式会社APD</h1>
                 </div>
@@ -115,7 +116,7 @@
         <!-- HERO SECTION -->
         <section class="w-full">
             <div class="w-full bg-emerald-50 overflow-hidden aspect-[16/9] md:aspect-[2.4/1] md:max-h-[450px] flex items-center justify-center relative shadow-inner">
-                <img src="assets/images/23277795_m.jpg" alt="株式会社APDメインイメージ" class="w-full h-full object-cover hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                <img src="23277795_m.jpg" alt="株式会社APDメインイメージ" class="w-full h-full object-cover hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
                 <div class="placeholder-fallback flex flex-col items-center text-center p-6 text-brandGreen">
                     <div class="w-16 h-16 bg-brandGreen/10 rounded-full flex items-center justify-center mb-3">
                         <i class="fa-regular fa-image text-3xl"></i>
@@ -218,12 +219,12 @@
                 <!-- SUBHEADING DESIGN -->
                 <div class="mb-4 sm:mb-5 flex flex-col items-start gap-1">
                     <h3 class="text-xl sm:text-xl md:text-2xl font-black text-white flex items-center gap-2.5 relative pl-4">
-                        <span class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-brandOrange to-orange-300 rounded-full"></span>
+                        <span class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#87FFCB] to-teal-200 rounded-full"></span>
                         公式YouTube・SNS
                     </h3>
                     <div class="flex w-full items-center gap-1.5 mt-1.5">
-                        <div class="w-16 h-1 bg-white rounded-full"></div>
-                        <div class="w-2 h-1 bg-white/30 rounded-full"></div>
+                        <div class="w-16 h-1 bg-[#87FFCB] rounded-full"></div>
+                        <div class="w-2 h-1 bg-[#87FFCB]/50 rounded-full"></div>
                     </div>
                 </div>
 
@@ -248,14 +249,79 @@
 
                     <div class="pt-2">
                         <h4 class="text-white text-base sm:text-xl font-bold mb-3 flex items-center gap-2">
-                            <i class="fab fa-youtube text-[#fef263] text-xl sm:text-2xl"></i>
-                            最新の横長動画
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fef263" class="sm:hidden">
+                                <path d="M852-212 732-332l56-56 120 120-56 56ZM708-692l-56-56 120-120 56 56-120 120Zm-456 0L132-812l56-56 120 120-56 56ZM108-212l-56-56 120-120 56 56-120 120Zm246-75 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-361Z"/>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#fef263" class="hidden sm:block">
+                                <path d="M852-212 732-332l56-56 120 120-56 56ZM708-692l-56-56 120-120 56 56-120 120Zm-456 0L132-812l56-56 120 120-56 56ZM108-212l-56-56 120-120 56 56-120 120Zm246-75 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-361Z"/>
+                            </svg>
+                            オススメの最新動画
                         </h4>
 
-                        <div data-video-autoload data-video-count="3" data-mobile-video-count="1" data-video-layout="home">
-                            <div class="bg-white rounded-xl p-4 text-center text-sm font-bold text-gray-500 shadow-md">
-                                最新動画を読み込んでいます...
-                            </div>
+                        <!-- 動画3本: スマホ2列＋1列中央 / PC3列 -->
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-4">
+                            <!-- Video Card 1 -->
+                            <a href="https://youtube.com/shorts/Tw_96IW8hVA?si=E89SNT9xWlj_hAlc" target="_blank" class="bg-white rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-all duration-300 flex flex-col">
+                                <div class="relative aspect-video bg-black/90 overflow-hidden">
+                                    <img src="YouTubeMovie_4.jpg" alt="動画リンク1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                                    <div class="placeholder-fallback absolute inset-0 bg-slate-800 flex items-center justify-center">
+                                        <i class="fab fa-youtube text-red-600 text-3xl sm:text-4xl"></i>
+                                    </div>
+                                    <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-brandOrange text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-play text-xs sm:text-base ml-0.5"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-2 sm:p-3 flex-grow flex flex-col justify-between bg-white">
+                                    <p class="text-xs sm:text-sm font-semibold text-gray-700 line-clamp-2 leading-tight sm:leading-snug group-hover:text-brandGreen transition-colors">
+                                        レビー小体型認知症
+                                    </p>
+                                    <span class="text-[9px] sm:text-[10px] text-gray-500 mt-1 sm:mt-2 font-regular">業務改善①</span>
+                                </div>
+                            </a>
+
+                            <!-- Video Card 2 -->
+                            <a href="https://youtu.be/3k6CKc0UZxs?si=14lG7TGG5ZpbVLUL" target="_blank" class="bg-white rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-all duration-300 flex flex-col">
+                                <div class="relative aspect-video bg-black/90 overflow-hidden">
+                                    <img src="YouTubeMovie_5.jpg" alt="動画リンク2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                                    <div class="placeholder-fallback absolute inset-0 bg-slate-800 flex items-center justify-center">
+                                        <i class="fab fa-youtube text-red-600 text-3xl sm:text-4xl"></i>
+                                    </div>
+                                    <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-brandOrange text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-play text-xs sm:text-base ml-0.5"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-2 sm:p-3 flex-grow flex flex-col justify-between bg-white">
+                                    <p class="text-xs sm:text-sm font-semibold text-gray-700 line-clamp-2 leading-tight sm:leading-snug group-hover:text-brandGreen transition-colors">
+                                        【神回】8万人TikToker・片岡ちゃしょ～がカイゴのひでChannelに降臨！介護の常識を覆す。片岡ちゃしょ～との対談が面白すぎた。
+                                    </p>
+                                    <span class="text-[9px] sm:text-[10px] text-gray-500 mt-1 sm:mt-2 font-regular">業務改善②</span>
+                                </div>
+                            </a>
+
+                            <!-- Video Card 3: スマホではcol-span-2で中央配置 -->
+                            <a href="https://youtu.be/FpgSl8XrCtc?si=iChT_nw9XQHhRhv9" target="_blank" class="col-span-2 md:col-span-1 w-full max-w-[calc(50%_-_0.3125rem)] md:max-w-full mx-auto bg-white rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-all duration-300 flex flex-col">
+                                <div class="relative aspect-video bg-black/90 overflow-hidden">
+                                    <img src="YouTubeMovie_6.jpg" alt="動画リンク3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                                    <div class="placeholder-fallback absolute inset-0 bg-slate-800 flex items-center justify-center">
+                                        <i class="fab fa-youtube text-red-600 text-3xl sm:text-4xl"></i>
+                                    </div>
+                                    <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-brandOrange text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-play text-xs sm:text-base ml-0.5"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-2 sm:p-3 flex-grow flex flex-col justify-between bg-white">
+                                    <p class="text-[11px] sm:text-sm font-semibold text-gray-700 line-clamp-2 leading-tight sm:leading-snug group-hover:text-brandGreen transition-colors">
+                                        【法定研修】【高齢者虐待】介護現場に潜む「3つの罠」自立支援のつもりが逆効果？
+                                    </p>
+                                    <span class="text-[9px] sm:text-[10px] text-gray-500 mt-1 sm:mt-2 font-regular">業務改善③</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
@@ -274,7 +340,7 @@
             <div class="max-w-3xl mx-auto px-4 sm:px-6 md:px-8">
                  <!-- 代表挨拶アクセント画像 -->
                 <div class="w-full bg-slate-50 rounded-xl sm:rounded-2xl overflow-hidden aspect-[3.5/1] sm:aspect-[4.5/1] md:aspect-[5/1] mb-4 sm:mb-6 flex items-center justify-center relative border border-slate-100 shadow-sm">
-                    <img src="assets/images/index_profile.jpg" alt="株式会社APD代表写真" class="w-full h-full object-cover hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                    <img src="index_profile.jpg" alt="株式会社APD代表写真" class="w-full h-full object-cover hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
                     <div class="placeholder-fallback flex items-center justify-center gap-2 text-slate-500 p-2">
                         <i class="fa-solid fa-user-tie text-base sm:text-xl text-brandGreen"></i>
                         <span class="font-bold text-xs sm:text-sm">代表プロフィール</span>
@@ -315,7 +381,7 @@
             <div class="max-w-3xl mx-auto px-4 sm:px-6 md:px-8">
                 <!-- 会社概要アクセント画像 -->
                 <div class="w-full bg-white/10 rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/1] sm:aspect-[5/1] md:aspect-[5.5/1] mb-4 sm:mb-6 flex items-center justify-center relative border border-white/20 shadow-sm">
-                    <img src="assets/images/A7406499_TP_V.jpg" alt="会社概要イメージ" class="w-full h-full object-cover hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                    <img src="A7406499_TP_V.jpg" alt="会社概要イメージ" class="w-full h-full object-cover hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
                     <div class="placeholder-fallback flex items-center justify-center gap-2 text-white p-2">
                         <i class="fa-solid fa-building text-base sm:text-xl text-[#fef263]"></i>
                         <span class="font-bold text-xs sm:text-sm">オフィス・会社イメージ</span>
@@ -325,18 +391,18 @@
                 <!-- SUBHEADING -->
                 <div class="mb-4 sm:mb-5 flex flex-col items-start gap-1">
                     <h3 class="text-xl md:text-2xl font-black text-white flex items-center gap-3 relative pl-4">
-                        <span class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-brandOrange to-orange-300 rounded-full"></span>
+                        <span class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#87FFCB] to-teal-200 rounded-full"></span>
                         会社概要
                     </h3>
                     <div class="flex w-full items-center gap-1.5 mt-1.5">
-                        <div class="w-16 h-1 bg-white rounded-full"></div>
-                        <div class="w-2 h-1 bg-white/30 rounded-full"></div>
+                        <div class="w-16 h-1 bg-[#87FFCB] rounded-full"></div>
+                        <div class="w-2 h-1 bg-[#87FFCB]/50 rounded-full"></div>
                     </div>
                 </div>
 
                 <div class="space-y-5">
                     <div class="space-y-3">
-                        <h4 class="text-xl sm:text-2xl md:text-3xl font-demibold tracking-widest text-left text-white">株式会社APD</h4>
+                        <h4 class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-widest text-left text-white">株式会社APD</h4>
                         
                         <div class="mt-2 text-white">
                             <p class="text-sm sm:text-base md:text-lg font-medium leading-relaxed">
@@ -361,7 +427,7 @@
             <div class="max-w-3xl mx-auto px-4 sm:px-6 md:px-8">
                 <!-- お問い合わせアクセント画像 -->
                 <div class="w-full bg-slate-50 rounded-xl sm:rounded-2xl overflow-hidden aspect-[4.5/1] sm:aspect-[5.5/1] md:aspect-[6.5/1] mb-4 sm:mb-6 flex items-center justify-center relative border border-slate-150 shadow-sm">
-                    <img src="assets/images/index_contact.jpg" alt="お問い合わせイメージ" class="w-full h-full object-cover hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
+                    <img src="index_contact.jpg" alt="お問い合わせイメージ" class="w-full h-full object-cover hidden" onload="imageLoaded(this)" onerror="imageLoadError(this)">
                     <div class="placeholder-fallback flex items-center justify-center gap-2 text-slate-400 p-2">
                         <i class="fa-regular fa-comments text-base sm:text-xl text-brandOrange"></i>
                         <span class="font-bold text-xs sm:text-sm">お問い合わせ</span>
@@ -407,7 +473,7 @@
         <div class="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
             <!-- Social Accounts -->
             <div class="space-y-3 sm:space-y-4">
-                <h4 class="text-sm sm:text-lg font-bold tracking-wider">公式SNSアカウント</h4>
+                <h4 class="text-base sm:text-lg font-bold tracking-wider">公式SNSアカウント</h4>
                 <div class="flex justify-center items-center gap-4 sm:gap-6 text-2xl sm:text-3xl md:text-4xl">
                     <a href="https://www.instagram.com/kaigo_no_hidechannel/" target="_blank" class="hover:scale-110 transition-transform hover:text-[#fef263] p-1.5 sm:p-2">
                         <i class="fab fa-instagram"></i>
@@ -433,14 +499,14 @@
             <!-- Brand / Logo bottom -->
             <div class="space-y-1.5 pt-3 border-t border-white/20">
                 <div class="flex justify-center items-center gap-2">
-                    <a href="index.html" class="flex items-center gap-2">
-                        <img src="assets/images/APD_logo.svg" alt="株式会社APD" class="h-8 sm:h-10 w-auto">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="APD_logo.svg" alt="株式会社APD" class="h-8 sm:h-10 w-auto">
                         <div>
-                            <h3 class="text-lg sm:text-2xl font-black text-white tracking-wider">株式会社APD</h3>
+                            <h3 class="text-xl sm:text-2xl font-black text-white tracking-wider">株式会社APD</h3>
                         </div>
                     </a>
                 </div>
-                <p class="text-xs sm:text-base text-[#004619] font-medium">介護の未来を創る</p>
+                <p class="text-sm sm:text-base text-[#004619] font-medium">介護の未来を創る</p>
             </div>
 
             <!-- Navigation Links in Footer -->
@@ -468,7 +534,5 @@
             </p>
         </div>
     </footer>
-<script src="assets/js/apd-latest-videos.js" defer></script>
 </body>
 </html>
-
