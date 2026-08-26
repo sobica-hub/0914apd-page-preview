@@ -5,7 +5,7 @@ const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzrSaDiBKvyvtR6
 
   if (!targets.length) return;
 
-  const fallbackImage = "assets/images/YouTubeMovie_5.jpg";
+  const fallbackImage = "YouTubeMovie_5.jpg";
   let loadedDataPromise;
 
   function installStyles() {
@@ -311,4 +311,5 @@ const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzrSaDiBKvyvtR6
       .catch(() => showMessage(target, "最新動画を読み込めませんでした。"));
   });
 })();
+
 
