@@ -183,6 +183,8 @@ const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzrSaDiBKvyvtR6
       video.url,
       video.link,
       video.title,
+      video.youtubeDescription,
+      video.description,
       video.type,
     ].join(" ").toLowerCase();
 
@@ -221,16 +223,18 @@ const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzrSaDiBKvyvtR6
       if (picked.length >= count) break;
       if (isExplicitShort(video)) continue;
 
-      const duration = getDurationSeconds(video);
       const landscape = await isLandscapeThumbnail(video);
 
       if (!landscape) continue;
-      if (duration && duration <= 60) continue;
 
       picked.push(video);
     }
 
     return picked;
+  }
+
+  function pickAllVideos(videos, count) {
+    return videos.slice(0, count);
   }
 
   function normalizeVideos(data) {
@@ -256,7 +260,7 @@ const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzrSaDiBKvyvtR6
         reject(new Error("latest videos failed"));
       };
 
-      script.src = `${url}${separator}callback=${encodeURIComponent(callbackName)}&maxResults=12&limit=12&excludeShorts=1`;
+      script.src = `${url}${separator}callback=${encodeURIComponent(callbackName)}&maxResults=50&limit=50`;
       document.head.appendChild(script);
     });
   }
@@ -286,13 +290,16 @@ const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzrSaDiBKvyvtR6
     const mobileCount = Number(target.dataset.mobileVideoCount || count);
     const activeCount = window.matchMedia("(max-width: 767px)").matches ? mobileCount : count;
     const layout = target.dataset.videoLayout || "sns";
-    const videos = await pickLandscapeVideos(normalizeVideos(data), activeCount);
+    const allVideos = normalizeVideos(data);
+    const videos = layout === "home"
+      ? await pickLandscapeVideos(allVideos, activeCount)
+      : pickAllVideos(allVideos, activeCount);
 
     target.classList.add("apd-latest-video-grid");
     target.dataset.videoLayout = layout;
 
     if (!videos.length) {
-      showMessage(target, "表示できる横長動画が見つかりませんでした。");
+      showMessage(target, layout === "home" ? "表示できる横長動画が見つかりませんでした。" : "最新動画が見つかりませんでした。");
       return;
     }
 
