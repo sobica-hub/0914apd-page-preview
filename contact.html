@@ -52,6 +52,59 @@
                 placeholder.classList.remove('hidden');
             }
         }
+
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLScn7JLL0d1PhXMP94eWHJpUm1yQ9MKWjdd_ePyOvkbrXjH6EA/viewform";
+
+        const CONTACT_TYPE_LABELS = {
+            "online-training": "オンライン法定研修",
+            "contract-video": "利用契約書・重要事項説明書動画製作",
+            "gh-consulting": "認知症GHの経営相談",
+            "other": "その他"
+        };
+
+        const SOURCE_LABELS = {
+            "hp": "HP",
+            "website": "HP",
+            "lp": "LP",
+            "faxdm": "FAXDM",
+            "fax-dm": "FAXDM",
+            "youtube": "YouTube",
+            "instagram": "Instagram"
+        };
+
+        function getContactContext() {
+            const params = new URLSearchParams(window.location.search);
+            const typeKey = params.get("type") || "other";
+            const sourceKey = params.get("source") || params.get("utm_source") || "";
+            const typeLabel = CONTACT_TYPE_LABELS[typeKey] || CONTACT_TYPE_LABELS.other;
+            const sourceLabel = (
+                sourceKey
+                    ? (SOURCE_LABELS[sourceKey.toLowerCase()] || sourceKey)
+                    : (window.ApdTrafficSource ? window.ApdTrafficSource.get() : "")
+            );
+            return { typeKey, sourceKey, typeLabel, sourceLabel };
+        }
+
+        function buildGoogleFormUrl(context) {
+            const formParams = new URLSearchParams();
+            formParams.set("embedded", "true");
+            formParams.set("entry.1418869620", context.typeLabel);
+
+            if (context.sourceLabel) {
+                formParams.set("entry.1722407290", context.sourceLabel);
+            }
+
+            return `${GOOGLE_FORM_BASE_URL}?${formParams.toString()}`;
+        }
+
+        function applyContactContext() {
+            const context = getContactContext();
+            const iframe = document.getElementById("googleFormIframe");
+
+            if (iframe) {
+                iframe.src = buildGoogleFormUrl(context);
+            }
+        }
         
         function toggleFormUnlock(checkbox) {
             const overlay = document.getElementById('formOverlay');
@@ -71,7 +124,8 @@
                 iframe.classList.add("pointer-events-none");
             }
         }
-</script>
+
+        document.addEventListener("DOMContentLoaded", applyContactContext);
     </script>
 
     <!-- CUSTOM RESPONSIVE CSS RULE & WAVE PATTERNS -->
@@ -102,11 +156,8 @@
             </a>
             
             <!-- Catchphrase (Right) -->
-            <div class="text-right text-xs text-gray-600 font-bold flex-shrink-1 min-w-0 max-w-[160px] sm:max-w-none">
-                <p class="text-brandGreen font-extrabold text-[9px] sm:text-xs leading-none">【介護事業者向け】</p>
-                <p class="text-[8px] sm:text-[10px] md:text-[11px] text-gray-500 font-medium mt-0.5 sm:mt-1 leading-tight sm:leading-snug break-all sm:break-normal">
-                    オンライン法定研修・運営指導対策・<br class="inline sm:hidden">認知症GH経営支援
-                </p>
+            <div class="flex justify-end items-center flex-shrink min-w-0 max-w-[190px] sm:max-w-[300px] md:max-w-[420px] lg:max-w-[520px]">
+                <img src="assets/images/header-catchphrase.png?v=20260924" alt="現場から、介護を少しずつ良くする。介護する人と、介護を受ける人の笑顔のために。" class="h-8 sm:h-11 md:h-14 lg:h-16 w-auto max-w-full object-contain">
             </div>
         </div>
     </header>
@@ -119,16 +170,16 @@
                     <span class="inline-block">ホーム</span>
                 </a>
                 <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
+                <a href="profile.html" class="px-1 py-1 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
+                    <span class="inline-block">代表<br class="inline sm:hidden">挨拶</span>
+                </a>
+                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
                 <a href="sns.html" class="px-1 py-1 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
                     <span class="inline-block">YouTube<br class="inline sm:hidden">・SNS</span>
                 </a>
                 <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
                 <a href="service.html" class="px-1 py-1 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
                     <span class="inline-block">サービス<br class="inline sm:hidden">概要</span>
-                </a>
-                <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
-                <a href="profile.html" class="px-1 py-1 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
-                    <span class="inline-block">代表<br class="inline sm:hidden">挨拶</span>
                 </a>
                 <span class="opacity-40 text-xs flex-shrink-0 hidden sm:inline">|</span>
                 <a href="company.html" class="px-1 py-1 hover:text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
@@ -138,6 +189,7 @@
                 <a href="#" class="px-1 py-1 text-[#fef263] transition-colors flex-1 sm:flex-none text-center leading-snug sm:px-4">
                     <span class="inline-block">お問い<br class="inline sm:hidden">合わせ</span>
                 </a>
+            
             </div>
         </div>
     </nav>
@@ -192,7 +244,7 @@
 
                     <!-- Google Form Iframe (初期状態は半透明・操作不可) -->
                     <!-- Googleフォームは内容変更時に高さが変わるため、必要に応じて h-[...] を調整 -->
-                    <iframe id="googleFormIframe" src="https://docs.google.com/forms/d/e/1FAIpQLScUS_J8TaFeUnq3tnkjRdHljU9Z-nX2Dw7Arj9Y_YJgL7aaSA/viewform?embedded=true" class="w-full h-[1950px] sm:h-[1900px] md:h-[1900px] lg:h-[1850px] border-0 transition-opacity duration-300 opacity-20 pointer-events-none" frameborder="0" marginheight="0" marginwidth="0">
+                    <iframe id="googleFormIframe" src="https://docs.google.com/forms/d/e/1FAIpQLScn7JLL0d1PhXMP94eWHJpUm1yQ9MKWjdd_ePyOvkbrXjH6EA/viewform?embedded=true" class="w-full h-[1950px] sm:h-[1900px] md:h-[1900px] lg:h-[1850px] border-0 transition-opacity duration-300 opacity-20 pointer-events-none" frameborder="0" marginheight="0" marginwidth="0">
                         読み込んでいます…
                     </iframe>
                 </div>
@@ -253,16 +305,15 @@
                 </div>
                 <p class="text-sm sm:text-base text-[#004619] font-medium">介護の未来を創る</p>
             </div>
-
-            <!-- Navigation Links in Footer (お問い合わせを黄色にハイライト) -->
+            <!-- Navigation Links in Footer -->
             <div class="flex flex-wrap justify-center items-center gap-x-3 sm:gap-x-4 gap-y-2.5 text-sm text-white font-medium">
                 <a href="index.html" class="hover:text-[#fef263] py-1">ホーム</a>
+                <span class="opacity-30">|</span>
+                <a href="profile.html" class="hover:text-[#fef263] py-1">代表挨拶</a>
                 <span class="opacity-30">|</span>
                 <a href="sns.html" class="hover:text-[#fef263] py-1">YouTube・SNS</a>
                 <span class="opacity-30">|</span>
                 <a href="service.html" class="hover:text-[#fef263] py-1">サービス概要</a>
-                <span class="opacity-30">|</span>
-                <a href="profile.html" class="hover:text-[#fef263] py-1">代表挨拶</a>
                 <span class="opacity-30">|</span>
                 <a href="company.html" class="hover:text-[#fef263] py-1">会社概要</a>
                 <span class="opacity-30">|</span>
@@ -279,5 +330,6 @@
             </p>
         </div>
     </footer>
+    <script src="assets/js/apd-traffic-source.js?v=20260924"></script>
 </body>
 </html>
