@@ -10,21 +10,12 @@
         "faxdm": "FAXDM",
         "fax-dm": "FAXDM",
         "youtube": "YouTube",
-        "instagram": "Instagram",
-        "threads": "Threads",
-        "facebook": "Facebook",
-        "tiktok": "TikTok",
-        "x": "X",
-        "twitter": "X"
+        "instagram": "Instagram"
     };
 
     const REFERRER_PATTERNS = [
         { pattern: /instagram\.com|l\.instagram\.com/i, label: "Instagram" },
-        { pattern: /youtube\.com|youtu\.be/i, label: "YouTube" },
-        { pattern: /threads\.(com|net)/i, label: "Threads" },
-        { pattern: /facebook\.com|fb\.com|l\.facebook\.com/i, label: "Facebook" },
-        { pattern: /tiktok\.com/i, label: "TikTok" },
-        { pattern: /twitter\.com|x\.com|t\.co/i, label: "X" }
+        { pattern: /youtube\.com|youtu\.be/i, label: "YouTube" }
     ];
 
     function normalizeSource(value) {
@@ -53,7 +44,7 @@
 
             const matched = REFERRER_PATTERNS.find((item) => item.pattern.test(referrerUrl.hostname));
             if (matched) return matched.label;
-            return referrerUrl.hostname.replace(/^www\./, "");
+            return "HP";
         } catch (error) {
             return "";
         }
@@ -82,7 +73,7 @@
             storeSource(detected);
             return detected;
         }
-        return getStoredSource();
+        return getStoredSource() || "HP";
     }
 
     function decorateContactLinks(source) {
